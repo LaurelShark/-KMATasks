@@ -7,6 +7,32 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="181*"/>
+            <ColumnDefinition Width="336*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="33.706,87,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="33.706,130,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="33.706,174,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Click="button_Click"/>
+        <Label x:Name="label" Content="Login:&#xD;&#xA;" HorizontalAlignment="Left" Margin="140,87,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="75"/>
+        <Label x:Name="label1" Content="Password:&#xD;&#xA;" HorizontalAlignment="Left" Margin="140,126,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.098,0.39" Grid.ColumnSpan="2"/>
+        <Expander x:Name="expander" Header="Expander" HorizontalAlignment="Left" Margin="78,52,0,0" VerticalAlignment="Top">
+            <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-14.644"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="59*"/>
+                    <ColumnDefinition Width="43*"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+        </Expander>
+
     </Grid>
 </Window>
