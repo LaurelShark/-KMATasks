@@ -83,11 +83,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DirectoryFileBrowserDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="FileUtils\AbstractNode.cs" />
-    <Compile Include="FileUtils\DirectoryNode.cs" />
-    <Compile Include="FileUtils\FileNode.cs" />
-    <Compile Include="FileUtils\FileUtils.cs" />
-    <Compile Include="FileUtils\Main.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

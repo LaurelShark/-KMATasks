@@ -1,7 +1,6 @@
 E:\НаУКМА\4 year\Architecture of applied programs\DirectoryFileBrowser\DirectoryFileBrowser\DirectoryFileBrowser\bin\Debug\DirectoryFileBrowser.exe.config
 E:\НаУКМА\4 year\Architecture of applied programs\DirectoryFileBrowser\DirectoryFileBrowser\DirectoryFileBrowser\bin\Debug\DirectoryFileBrowser.exe
 E:\НаУКМА\4 year\Architecture of applied programs\DirectoryFileBrowser\DirectoryFileBrowser\DirectoryFileBrowser\bin\Debug\DirectoryFileBrowser.pdb
-E:\НаУКМА\4 year\Architecture of applied programs\DirectoryFileBrowser\DirectoryFileBrowser\DirectoryFileBrowser\obj\Debug\DirectoryFileBrowser.csprojResolveAssemblyReference.cache
 E:\НаУКМА\4 year\Architecture of applied programs\DirectoryFileBrowser\DirectoryFileBrowser\DirectoryFileBrowser\obj\Debug\MainWindow.g.cs
 E:\НаУКМА\4 year\Architecture of applied programs\DirectoryFileBrowser\DirectoryFileBrowser\DirectoryFileBrowser\obj\Debug\App.g.cs
 E:\НаУКМА\4 year\Architecture of applied programs\DirectoryFileBrowser\DirectoryFileBrowser\DirectoryFileBrowser\obj\Debug\DirectoryFileBrowser_MarkupCompile.cache
