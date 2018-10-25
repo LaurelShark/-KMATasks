@@ -10,11 +10,23 @@ namespace DirectoryFileBrowser
     class FileUtils
     {
         public static AbstractNode getFileTreeByDirectoryPath(string path) {
-            DirectoryInfo info = new DirectoryInfo(path);
-            if (info.Exists)
-                return new DirectoryNode(path, buildFileTree(info));
-            else
-                return null;
+            try
+            {
+                DirectoryInfo info = new DirectoryInfo(path);
+                if (info.Exists)
+                    return new DirectoryNode(path, buildFileTree(info));
+                else
+                    throw new ReadException("Error! Path either doesn't exist or isn't a directory", null);
+            }
+            catch (ReadException e) {
+                throw e;
+            }
+            catch (Exception e)
+            {
+                string msg = String.Format("Error! Failed to read path '{0}'. Exception '{1}' occurred.",
+                    path, e.GetType().ToString());
+                throw new ReadException(msg, e);
+            }
         }
 
         private static List<AbstractNode> buildFileTree(DirectoryInfo directory) {
@@ -25,5 +37,11 @@ namespace DirectoryFileBrowser
             return dirs.Concat<AbstractNode>(files)
                 .ToList();
         }
+    }
+
+    class ReadException : Exception
+    {
+        public ReadException(string msg, Exception cause) : base(msg, cause)
+        { }
     }
 }
