@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DirectoryFileBrowser.Views.Tree;
 
 namespace DirectoryFileBrowser
 {
@@ -33,6 +34,8 @@ namespace DirectoryFileBrowser
         {
             
         }
+
+        WindowTree windowTree = new WindowTree();
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
@@ -58,10 +61,9 @@ namespace DirectoryFileBrowser
                     if (dataSet.Tables[0].Rows.Count > 0)
                     {
                         string username = dataSet.Tables[0].Rows[0]["name"].ToString() + " " + dataSet.Tables[0].Rows[0]["surname"].ToString();
-                        MessageBox.Show(username);
-                       // welcome.TextBlockName.Text = username;//Sending value from one form to another form.  
-                       // welcome.Show();
-                       //Close();
+                       // MessageBox.Show(username);
+                        windowTree.textBlockFullName.Text = username;
+                        windowTree.Show();
                     }
                     else
                     {

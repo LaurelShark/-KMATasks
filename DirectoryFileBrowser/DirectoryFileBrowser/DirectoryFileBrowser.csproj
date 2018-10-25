@@ -76,10 +76,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="FileUtils\AbstractNode.cs" />
-    <Compile Include="FileUtils\DirectoryNode.cs" />
-    <Compile Include="FileUtils\FileNode.cs" />
-    <Compile Include="FileUtils\FileUtils.cs" />
     <Compile Include="Managers\DBManager.cs" />
     <Compile Include="Managers\NavigationManager.cs" />
     <Compile Include="Tools\Encrypting.cs" />
@@ -87,8 +83,12 @@
     <Compile Include="Tools\NavigationModel.cs" />
     <Compile Include="Tools\RelayCommand.cs" />
     <Compile Include="ViewsModels\Authentication\SignInViewModel.cs" />
+    <Compile Include="ViewsModels\Tree\WindowTreeViewModel.cs" />
     <Compile Include="Views\Authenfication\SignInView.xaml.cs">
       <DependentUpon>SignInView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\WindowTree.xaml.cs">
+      <DependentUpon>WindowTree.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -108,6 +108,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Authenfication\SignInView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tree\WindowTree.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

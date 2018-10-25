@@ -1,0 +1,16 @@
+﻿<Window x:Class="DirectoryFileBrowser.Views.Tree.WindowTree"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DirectoryFileBrowser.Views.Tree"
+        mc:Ignorable="d"
+        Title="WindowTree" Height="300" Width="300">
+    <Grid>
+        <TextBlock x:Name="welcomeLabel" HorizontalAlignment="Left" Height="18" Margin="10,10,0,0" TextWrapping="Wrap" Text="Welcome, " VerticalAlignment="Top" Width="54"/>
+        <TextBlock x:Name="textBlockFullName" HorizontalAlignment="Left" Height="18" Margin="66,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101"/>
+        <TextBlock x:Name="pathLabel" HorizontalAlignment="Left" Height="18" Margin="10,28,0,0" TextWrapping="Wrap" Text="Path: " VerticalAlignment="Top" Width="32"/>
+        <TextBox x:Name="path" HorizontalAlignment="Left" Height="18" Margin="47,27,0,0" TextWrapping="Wrap" Text="your path" VerticalAlignment="Top" Width="235"/>
+
+    </Grid>
+</Window>

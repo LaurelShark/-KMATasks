@@ -1,4 +1,5 @@
 ﻿using DirectoryFileBrowser.Views;
+using DirectoryFileBrowser.Views.Tree;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace DirectoryFileBrowser.Tools
         // write other fields
         private readonly IContentWindow _contentWindow;
         private SignInView signInView;
+        private WindowTree windowTree;
 
         internal NavigationModel(IContentWindow contentWindow)
         {
@@ -32,6 +34,9 @@ namespace DirectoryFileBrowser.Tools
             {
                 case ModesEnum.SignIn:
                     _contentWindow.ContentControl.Content = signInView ?? (signInView = new SignInView());
+                    break;
+                case ModesEnum.Tree:
+                    _contentWindow.ContentControl.Content = windowTree ?? (windowTree = new WindowTree());
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
