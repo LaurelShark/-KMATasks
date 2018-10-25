@@ -1,5 +1,8 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System.Data;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,11 +26,39 @@ namespace DirectoryFileBrowser
         public MainWindow()
         {
             InitializeComponent();
+
+        }
+
+        private void connectToDB()
+        {
+            
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            
+            string connetionString = "Server=127.0.0.1;Database=hw01;User ID=root;Password=;SslMode=none";
+            MySqlConnection cnn = new MySqlConnection(connetionString);
+
+            cnn.Open();
+            MySqlCommand isUser = cnn.CreateCommand();
+            isUser.CommandText = "SELECT * from user";
+            MessageBox.Show("Connection Open  !");
+            MySqlDataReader reader = isUser.ExecuteReader();
+            try
+            {
+                while (reader.Read())
+                {
+                    string login = (string)reader["login"];
+                    string password = (string)reader["password"];
+                    MessageBox.Show(login, password);
+                }
+            }
+            finally
+            {
+                reader.Close();
+            }
+
+            cnn.Close();
         }
     }
 }

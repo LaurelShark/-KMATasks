@@ -14,3 +14,9 @@ E:\НаУКМА\4 year\Architecture of applied programs\DirectoryFileBrowser\Dir
 E:\НаУКМА\4 year\Architecture of applied programs\DirectoryFileBrowser\DirectoryFileBrowser\DirectoryFileBrowser\bin\Debug\DirectoryFileBrowser.mdf
 E:\НаУКМА\4 year\Architecture of applied programs\DirectoryFileBrowser\DirectoryFileBrowser\DirectoryFileBrowser\bin\Debug\DirectoryFileBrowser_log.ldf
 E:\НаУКМА\4 year\Architecture of applied programs\DirectoryFileBrowser\DirectoryFileBrowser\DirectoryFileBrowser\obj\Debug\DirectoryFileBrowser_Content.g.cs
+E:\НаУКМА\4 year\Architecture of applied programs\DirectoryFileBrowser\DirectoryFileBrowser\DirectoryFileBrowser\obj\Debug\DirectoryFileBrowser.csprojResolveAssemblyReference.cache
+E:\НаУКМА\4 year\Architecture of applied programs\DirectoryFileBrowser\DirectoryFileBrowser\DirectoryFileBrowser\bin\Debug\MySql.Data.dll
+E:\НаУКМА\4 year\Architecture of applied programs\DirectoryFileBrowser\DirectoryFileBrowser\DirectoryFileBrowser\bin\Debug\Google.Protobuf.dll
+E:\НаУКМА\4 year\Architecture of applied programs\DirectoryFileBrowser\DirectoryFileBrowser\DirectoryFileBrowser\bin\Debug\MySql.Data.xml
+E:\НаУКМА\4 year\Architecture of applied programs\DirectoryFileBrowser\DirectoryFileBrowser\DirectoryFileBrowser\obj\Debug\Views\Authenfication\SignInView.g.cs
+E:\НаУКМА\4 year\Architecture of applied programs\DirectoryFileBrowser\DirectoryFileBrowser\DirectoryFileBrowser\obj\Debug\Views\Authenfication\SignInView.baml
