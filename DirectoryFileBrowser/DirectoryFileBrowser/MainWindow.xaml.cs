@@ -38,30 +38,39 @@ namespace DirectoryFileBrowser
         {
             try
             {
-                string connetionString = "Server=127.0.0.1;Database=hw01;User ID=root;Password=;SslMode=none";
-                MySqlConnection cnn = new MySqlConnection(connetionString);
-
-                cnn.Open();
-                MySqlCommand isUser = cnn.CreateCommand();
-                isUser.CommandText = "SELECT * from user";
-                MessageBox.Show("Connection Open  !");
-                MySqlDataReader reader = isUser.ExecuteReader();
-                try
+                if (textBoxLogin.Text.Length == 0)
                 {
-                    while (reader.Read())
+                    MessageBox.Show("Enter an email.");
+                    textBoxLogin.Focus();
+                }
+                else
+                {
+                    string login = textBoxLogin.Text;
+                    string password = textBoxPassword.Text;
+                    MySqlConnection con = new MySqlConnection("Server=127.0.0.1;Database=hw01;User ID=root;Password=;SslMode=none");
+                    con.Open();
+                    MySqlCommand cmd = new MySqlCommand("Select * from User where login='" + login + "'  and password='" + password + "'", con);
+                    cmd.CommandType = CommandType.Text;
+                    MySqlDataAdapter adapter = new MySqlDataAdapter();
+                    adapter.SelectCommand = cmd;
+                    DataSet dataSet = new DataSet();
+                    adapter.Fill(dataSet);
+                    if (dataSet.Tables[0].Rows.Count > 0)
                     {
-                        string login = (string)reader["login"];
-                        string password = (string)reader["password"];
-                        MessageBox.Show(login, password);
+                        string username = dataSet.Tables[0].Rows[0]["name"].ToString() + " " + dataSet.Tables[0].Rows[0]["surname"].ToString();
+                        MessageBox.Show(username);
+                       // welcome.TextBlockName.Text = username;//Sending value from one form to another form.  
+                       // welcome.Show();
+                       //Close();
                     }
+                    else
+                    {
+                        MessageBox.Show("Sorry! Please enter existing emailid/password.");
+                    }
+                    con.Close();
                 }
-                finally
-                {
-                    reader.Close();
-                }
-                cnn.Close();
             }
-            catch (MySqlException ex) {
+            catch (MySqlException) {
                 MessageBox.Show("Failed to set up connection with database");
             }
         }
