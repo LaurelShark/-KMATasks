@@ -36,29 +36,34 @@ namespace DirectoryFileBrowser
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            string connetionString = "Server=127.0.0.1;Database=hw01;User ID=root;Password=;SslMode=none";
-            MySqlConnection cnn = new MySqlConnection(connetionString);
-
-            cnn.Open();
-            MySqlCommand isUser = cnn.CreateCommand();
-            isUser.CommandText = "SELECT * from user";
-            MessageBox.Show("Connection Open  !");
-            MySqlDataReader reader = isUser.ExecuteReader();
             try
             {
-                while (reader.Read())
-                {
-                    string login = (string)reader["login"];
-                    string password = (string)reader["password"];
-                    MessageBox.Show(login, password);
-                }
-            }
-            finally
-            {
-                reader.Close();
-            }
+                string connetionString = "Server=127.0.0.1;Database=hw01;User ID=root;Password=;SslMode=none";
+                MySqlConnection cnn = new MySqlConnection(connetionString);
 
-            cnn.Close();
+                cnn.Open();
+                MySqlCommand isUser = cnn.CreateCommand();
+                isUser.CommandText = "SELECT * from user";
+                MessageBox.Show("Connection Open  !");
+                MySqlDataReader reader = isUser.ExecuteReader();
+                try
+                {
+                    while (reader.Read())
+                    {
+                        string login = (string)reader["login"];
+                        string password = (string)reader["password"];
+                        MessageBox.Show(login, password);
+                    }
+                }
+                finally
+                {
+                    reader.Close();
+                }
+                cnn.Close();
+            }
+            catch (MySqlException ex) {
+                MessageBox.Show("Failed to set up connection with database");
+            }
         }
     }
 }
