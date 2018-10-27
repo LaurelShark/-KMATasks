@@ -11,8 +11,9 @@
         <TextBlock x:Name="textBlockFullName" HorizontalAlignment="Left" Height="38" Margin="117,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="326"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Height="28" Margin="32,55,0,0" TextWrapping="Wrap" Text="Write your path here:" VerticalAlignment="Top" Width="118"/>
         <TextBox x:Name="filePath" HorizontalAlignment="Left" Height="29" Margin="155,55,0,0" TextWrapping="Wrap" Text="PathToFind" VerticalAlignment="Top" Width="507"/>
-        <Button x:Name="findButton" Content="Find" HorizontalAlignment="Left" Height="28" Margin="688,56,0,0" VerticalAlignment="Top" Width="122" Click="findButton_Click"/>
+        <Button x:Name="findButton" Content="Find" HorizontalAlignment="Left" Height="27" Margin="688,56,0,0" VerticalAlignment="Top" Width="112" Click="findButton_Click"/>
         <TreeView Name="mainFileViewNode" HorizontalAlignment="Left" Height="380" Margin="32,89,0,0" VerticalAlignment="Top" Width="778"/>
+        <Button x:Name="showHistory" Content="Show paths &#xD;&#xA;    history" HorizontalAlignment="Left" Height="38" Margin="688,10,0,0" VerticalAlignment="Top" Width="112" Click="showHistory_Click"/>
 
     </Grid>
 

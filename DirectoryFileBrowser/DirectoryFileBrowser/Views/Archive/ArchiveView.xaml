@@ -6,9 +6,11 @@
         xmlns:local="clr-namespace:DirectoryFileBrowser.Views.Archive"
         mc:Ignorable="d"
         MinHeight="500" MinWidth="700">
-    <Grid>
-        <TextBlock x:Name="textBlockFullName" HorizontalAlignment="Left" Height="38" Margin="45,44,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="156"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="34" Margin="201,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="312"><Run Text=", "/><Run Text="that's your query history:"/></TextBlock>
+    <Grid >
+        <TextBlock x:Name="textBlockFullName" HorizontalAlignment="Left" Height="16" Margin="45,44,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="79"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="34" Margin="129,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="312"><Run Text=", "/><Run Text="that's your query history:"/></TextBlock>
+        <DataGrid x:Name="dataGrid" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="262" Margin="45,78,0,0" VerticalAlignment="Top" Width="607"/>
+        <Button x:Name="button" Content="Back" HorizontalAlignment="Left" Height="38" Margin="491,22,0,0" VerticalAlignment="Top" Width="161" Click="button_Click"/>
 
     </Grid>
 </UserControl>

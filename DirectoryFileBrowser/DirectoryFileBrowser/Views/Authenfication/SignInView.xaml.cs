@@ -38,7 +38,7 @@ namespace DirectoryFileBrowser.Views
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("w");
+           // MessageBox.Show("w");
             try
             {
                 //WindowTree windowTree = new WindowTree();
