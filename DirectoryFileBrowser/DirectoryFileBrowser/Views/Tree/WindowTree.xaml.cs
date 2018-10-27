@@ -23,5 +23,33 @@ namespace DirectoryFileBrowser.Views.Tree
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string path = filePath.Text;
+                AbstractNode fileNode = FileUtils.getFileTreeByDirectoryPath(path);
+                mainFileViewNode.Items.Clear();
+                TreeViewItem viewNode = buildTreeNode(fileNode);
+                mainFileViewNode.Items.Add(viewNode);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private TreeViewItem buildTreeNode(AbstractNode fileNode)
+        {
+            TreeViewItem viewNode = new TreeViewItem();
+            viewNode.Header = fileNode.Name;
+            if (fileNode.isDirectory())
+            {
+                Action<AbstractNode> addFileNodeToViewNode = node => viewNode.Items.Add(buildTreeNode(node));
+                fileNode.Children.ForEach(addFileNodeToViewNode);
+            }
+            return viewNode;
+        }
     }
 }
