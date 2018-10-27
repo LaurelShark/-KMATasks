@@ -95,8 +95,8 @@
     <Compile Include="Views\Authenfication\SignInView.xaml.cs">
       <DependentUpon>SignInView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Tree\WindowTree.xaml.cs">
-      <DependentUpon>WindowTree.xaml</DependentUpon>
+    <Compile Include="Views\Tree\WindowTreeView.xaml.cs">
+      <DependentUpon>WindowTreeView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -123,7 +123,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Tree\WindowTree.xaml">
+    <Page Include="Views\Tree\WindowTreeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -20,9 +20,9 @@ namespace DirectoryFileBrowser.Views.Tree
     /// <summary>
     /// Логика взаимодействия для WindowTree.xaml
     /// </summary>
-    public partial class WindowTree : Window
+    public partial class WindowTreeView
     {
-        public WindowTree()
+        public WindowTreeView()
         {
             InitializeComponent();
         }

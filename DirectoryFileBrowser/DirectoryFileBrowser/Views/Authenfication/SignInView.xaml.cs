@@ -1,5 +1,6 @@
 ﻿using DirectoryFileBrowser.Managers;
 using DirectoryFileBrowser.Models;
+using DirectoryFileBrowser.Tools;
 using DirectoryFileBrowser.Views.Tree;
 using DirectoryFileBrowser.ViewsModels.Authentication;
 using MySql.Data.MySqlClient;
@@ -40,7 +41,7 @@ namespace DirectoryFileBrowser.Views
             MessageBox.Show("w");
             try
             {
-                WindowTree windowTree = new WindowTree();
+                //WindowTree windowTree = new WindowTree();
                 if (textBoxLogin.Text.Length == 0)
                 {
                     MessageBox.Show("Enter an email.");
@@ -69,8 +70,8 @@ namespace DirectoryFileBrowser.Views
                         currUser.Name = userName;
                         currUser.Surname = userSurname;
                         SessionManager.user = currUser;
-                        windowTree.textBlockFullName.Text = userName;
-                        windowTree.Show();
+                        //windowTree.textBlockFullName.Text = userName;
+                        NavigationManager.Instance.Navigate(ModesEnum.Tree);
                     }
                     else
                     {
