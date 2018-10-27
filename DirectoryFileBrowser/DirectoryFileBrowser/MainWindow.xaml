@@ -3,19 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DirectoryFileBrowser"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="181*"/>
-            <ColumnDefinition Width="336*"/>
-        </Grid.ColumnDefinitions>
-        <TextBox x:Name="textBoxLogin" HorizontalAlignment="Left" Height="23" Margin="33.706,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <TextBox x:Name="textBoxPassword" HorizontalAlignment="Left" Height="23" Margin="33.706,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <Button x:Name="button" Content="Sign in" HorizontalAlignment="Left" Margin="33.706,174,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1" Click="button_Click"/>
-        <Label x:Name="label" Content="Login&#xA;" HorizontalAlignment="Left" Margin="140,87,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="75"/>
-        <Label x:Name="label1" Content="Password:&#xD;&#xA;" HorizontalAlignment="Left" Margin="140,126,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.098,0.39" Grid.ColumnSpan="2"/>
+        Title="DirectoryFileBrowser" MinHeight="500" MinWidth="700">
+    <ContentControl Name="_contentControl">
 
-    </Grid>
+    </ContentControl>
 </Window>

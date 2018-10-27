@@ -6,19 +6,14 @@
         xmlns:local="clr-namespace:DirectoryFileBrowser.Views.Tree"
         mc:Ignorable="d"
         Title="WindowTree" Height="657.01" Width="873.863">
-    <Grid Margin="302,-120,-124,118" HorizontalAlignment="Left" Width="263" Height="373" VerticalAlignment="Bottom">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="110*"/>
-            <RowDefinition Height="261*"/>
-        </Grid.RowDefinitions>
-        <TextBlock x:Name="welcomeLabel" HorizontalAlignment="Left" Height="18" Margin="301,10,-89,0" TextWrapping="Wrap" Text="Welcome, " VerticalAlignment="Top" Width="54"/>
-        <TextBlock x:Name="textBlockFullName" HorizontalAlignment="Left" Height="18" Margin="66,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101"/>
-        <TextBlock x:Name="pathLabel" HorizontalAlignment="Left" Height="18" Margin="301,33,-67,0" TextWrapping="Wrap" Text="Path: " VerticalAlignment="Top" Width="32"/>
-        <TextBox x:Name="path" HorizontalAlignment="Left" Height="42" Margin="301,70,-168,0" TextWrapping="Wrap" Text="your path" VerticalAlignment="Top" Width="133" Grid.RowSpan="2"/>
+    <Grid>
+        <TextBlock x:Name="welcomeLabel" HorizontalAlignment="Left" Height="38" Margin="32,10,0,0" TextWrapping="Wrap" Text="Welcome, " VerticalAlignment="Top" Width="60"/>
+        <TextBlock x:Name="textBlockFullName" HorizontalAlignment="Left" Height="38" Margin="117,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="326"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Height="28" Margin="32,55,0,0" TextWrapping="Wrap" Text="Write your path here:" VerticalAlignment="Top" Width="118"/>
+        <TextBox x:Name="filePath" HorizontalAlignment="Left" Height="29" Margin="155,55,0,0" TextWrapping="Wrap" Text="PathToFind" VerticalAlignment="Top" Width="507"/>
+        <Button x:Name="findButton" Content="Find" HorizontalAlignment="Left" Height="28" Margin="688,56,0,0" VerticalAlignment="Top" Width="122" Click="findButton_Click"/>
+        <TreeView Name="mainFileViewNode" HorizontalAlignment="Left" Height="480" Margin="32,89,0,0" VerticalAlignment="Top" Width="778"/>
 
-
-        <TreeView Name="mainFileViewNode" Margin="-290,-115,306,0" RenderTransformOrigin="0.536,0.536" Height="396" VerticalAlignment="Top" HorizontalAlignment="Right" Width="247" Grid.RowSpan="2"/>
-        <Button x:Name="button1" Content="Build file tree by path" HorizontalAlignment="Left" Margin="81,148,-89,0" VerticalAlignment="Top" Width="274" Click="button1_Click" Height="22" Grid.Row="1"/>
-        <TextBox x:Name="filePath" HorizontalAlignment="Left" Height="23" Margin="231,83,-239,0" TextWrapping="Wrap" Text="D:\andrii\Audio\audio books\Lem" VerticalAlignment="Top" Width="274" Grid.Row="1"/>
     </Grid>
+
 </Window>

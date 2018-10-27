@@ -16,6 +16,7 @@ namespace DirectoryFileBrowser.Models
         #endregion
 
         #region Fields
+        private int id;
         private string name;
         private string surname;
         private string login;
@@ -27,13 +28,24 @@ namespace DirectoryFileBrowser.Models
 
 
         #region Properties
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+            set
+            {
+                id = value;
+            }
+        }
         public string Name
         {
             get
             {
                 return name;
             }
-            private set
+            set
             {
                 name = value;
             }
@@ -44,7 +56,7 @@ namespace DirectoryFileBrowser.Models
             {
                 return surname;
             }
-            private set
+            set
             {
                 surname = value;
             }

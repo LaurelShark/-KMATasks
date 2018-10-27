@@ -60,6 +60,5 @@ namespace DirectoryFileBrowser.Managers
             //If _navigationModel is null, nothing will happen
             _navigationModel?.Navigate(mode);
         }
-
     }
 }

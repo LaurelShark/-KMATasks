@@ -1,5 +1,8 @@
-﻿using System;
+﻿using DirectoryFileBrowser.Managers;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,15 +27,26 @@ namespace DirectoryFileBrowser.Views.Tree
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void findButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                MySqlConnection con = new MySqlConnection("Server=127.0.0.1;Database=hw01;User ID=root;Password=;SslMode=none");
+                con.Open();
                 string path = filePath.Text;
                 AbstractNode fileNode = FileUtils.getFileTreeByDirectoryPath(path);
                 mainFileViewNode.Items.Clear();
                 TreeViewItem viewNode = buildTreeNode(fileNode);
                 mainFileViewNode.Items.Add(viewNode);
+                int id = SessionManager.user.Id;
+                DateTime dateTime = DateTime.Now;
+                string date = dateTime.ToString("yyyy-MM-dd H:mm:ss");
+                MySqlCommand ins = new MySqlCommand("INSERT INTO query(userId, path, date) VALUES (" + id + ",'" + path.Replace("\\", "\\\\") + "', '" + date + "')", con);
+                ins.CommandType = CommandType.Text;
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.InsertCommand = ins;
+                ins.ExecuteNonQuery();
+                con.Close();
             }
             catch (Exception exception)
             {

@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace DirectoryFileBrowser.Tools
 {
     internal enum ModesEnum
     {
         SignIn,
-        Main,
         Tree,
         Archive
     }
@@ -33,7 +33,9 @@ namespace DirectoryFileBrowser.Tools
             switch (mode)
             {
                 case ModesEnum.SignIn:
+                    //MessageBox.Show("Here");
                     _contentWindow.ContentControl.Content = signInView ?? (signInView = new SignInView());
+                    
                     break;
                 case ModesEnum.Tree:
                     _contentWindow.ContentControl.Content = windowTree ?? (windowTree = new WindowTree());
