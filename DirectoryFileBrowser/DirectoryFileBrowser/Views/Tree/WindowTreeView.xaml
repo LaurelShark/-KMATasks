@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DirectoryFileBrowser.Views.Tree"
         mc:Ignorable="d"
-        Height="657.01" Width="873.863">
+        MinHeight="500" MinWidth="700">
     <Grid>
         <TextBlock x:Name="welcomeLabel" HorizontalAlignment="Left" Height="38" Margin="32,10,0,0" TextWrapping="Wrap" Text="Welcome, " VerticalAlignment="Top" Width="60"/>
         <TextBlock x:Name="textBlockFullName" HorizontalAlignment="Left" Height="38" Margin="117,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="326"/>
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Height="28" Margin="32,55,0,0" TextWrapping="Wrap" Text="Write your path here:" VerticalAlignment="Top" Width="118"/>
         <TextBox x:Name="filePath" HorizontalAlignment="Left" Height="29" Margin="155,55,0,0" TextWrapping="Wrap" Text="PathToFind" VerticalAlignment="Top" Width="507"/>
         <Button x:Name="findButton" Content="Find" HorizontalAlignment="Left" Height="28" Margin="688,56,0,0" VerticalAlignment="Top" Width="122" Click="findButton_Click"/>
-        <TreeView Name="mainFileViewNode" HorizontalAlignment="Left" Height="480" Margin="32,89,0,0" VerticalAlignment="Top" Width="778"/>
+        <TreeView Name="mainFileViewNode" HorizontalAlignment="Left" Height="380" Margin="32,89,0,0" VerticalAlignment="Top" Width="778"/>
 
     </Grid>
 

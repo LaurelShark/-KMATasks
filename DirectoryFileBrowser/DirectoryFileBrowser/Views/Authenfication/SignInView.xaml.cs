@@ -70,7 +70,7 @@ namespace DirectoryFileBrowser.Views
                         currUser.Name = userName;
                         currUser.Surname = userSurname;
                         SessionManager.user = currUser;
-                        //windowTree.textBlockFullName.Text = userName;
+                       
                         NavigationManager.Instance.Navigate(ModesEnum.Tree);
                     }
                     else

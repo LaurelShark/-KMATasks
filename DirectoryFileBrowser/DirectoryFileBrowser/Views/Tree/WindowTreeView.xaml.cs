@@ -25,6 +25,8 @@ namespace DirectoryFileBrowser.Views.Tree
         public WindowTreeView()
         {
             InitializeComponent();
+            string userName = SessionManager.user.Name + " " + SessionManager.user.Surname; 
+            textBlockFullName.Text = userName;
         }
 
         private void findButton_Click(object sender, RoutedEventArgs e)

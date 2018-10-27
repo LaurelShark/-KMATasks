@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DirectoryFileBrowser.Views"
         mc:Ignorable="d"
-         MinHeight="500" MinWidth="300">
+         MinHeight="500" MinWidth="700">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="181*"/>
