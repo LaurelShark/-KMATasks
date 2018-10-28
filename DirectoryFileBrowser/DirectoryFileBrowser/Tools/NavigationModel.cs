@@ -35,7 +35,6 @@ namespace DirectoryFileBrowser.Tools
             switch (mode)
             {
                 case ModesEnum.SignIn:
-                    //MessageBox.Show("Here");
                     _contentWindow.ContentControl.Content = signInView ?? (signInView = new SignInView());
                     
                     break;

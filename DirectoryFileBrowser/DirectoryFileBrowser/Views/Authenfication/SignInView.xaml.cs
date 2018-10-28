@@ -2,7 +2,6 @@
 using DirectoryFileBrowser.Models;
 using DirectoryFileBrowser.Tools;
 using DirectoryFileBrowser.Views.Tree;
-using DirectoryFileBrowser.ViewsModels.Authentication;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -30,8 +29,6 @@ namespace DirectoryFileBrowser.Views
         public SignInView()
         {
             InitializeComponent();
-            var signInViewModel = new SignInViewModel();
-            DataContext = signInViewModel;
         }
         #endregion
 

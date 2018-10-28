@@ -21,8 +21,6 @@ namespace DirectoryFileBrowser
             navigationModel.Navigate(ModesEnum.SignIn);
         }
 
-        
-
         private void button_Click(object sender, RoutedEventArgs e)
         {
             
