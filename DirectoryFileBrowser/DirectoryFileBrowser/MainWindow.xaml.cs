@@ -1,8 +1,5 @@
-﻿using MySql.Data.MySqlClient;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using DirectoryFileBrowser.Views.Tree;
 using DirectoryFileBrowser.Tools;
 using DirectoryFileBrowser.Managers;
 
