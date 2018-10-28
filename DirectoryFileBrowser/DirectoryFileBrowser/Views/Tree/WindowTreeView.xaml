@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DirectoryFileBrowser.Views.Tree"
         mc:Ignorable="d"
-        MinHeight="500" MinWidth="700">
+        MinHeight="500" MinWidth="700"
+                     Height="530"
+        Width="830">
     <Grid>
         <TextBlock x:Name="welcomeLabel" HorizontalAlignment="Left" Height="38" Margin="32,10,0,0" TextWrapping="Wrap" Text="Welcome, " VerticalAlignment="Top" Width="60"/>
         <TextBlock x:Name="textBlockFullName" HorizontalAlignment="Left" Height="38" Margin="117,10,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="326"/>
