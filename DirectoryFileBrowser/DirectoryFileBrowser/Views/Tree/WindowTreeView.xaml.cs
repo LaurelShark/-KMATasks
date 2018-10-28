@@ -63,5 +63,24 @@ namespace DirectoryFileBrowser.Views.Tree
         {
             NavigationManager.Instance.Navigate(ModesEnum.Archive);
         }
+
+        private void browseButton_Click(object sender, RoutedEventArgs e)
+        {
+            var fileDialog = new System.Windows.Forms.FolderBrowserDialog();
+            var result = fileDialog.ShowDialog();
+            switch (result)
+            {
+                case System.Windows.Forms.DialogResult.OK:
+                    var file = fileDialog.SelectedPath;
+                    filePath.Text = file;
+                    filePath.ToolTip = file;
+                    break;
+                case System.Windows.Forms.DialogResult.Cancel:
+                default:
+                    filePath.Text = null;
+                    filePath.ToolTip = null;
+                    break;
+            }
+        }
     }
 }
