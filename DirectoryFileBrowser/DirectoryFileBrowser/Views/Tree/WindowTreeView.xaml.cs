@@ -35,7 +35,7 @@ namespace DirectoryFileBrowser.Views.Tree
         {
             try
             {
-                MySqlConnection con = new MySqlConnection("Server=127.0.0.1;Database=hw01;User ID=root;Password=;SslMode=none");
+                MySqlConnection con = new MySqlConnection(DBManager.DefaultConnectionString);
                 con.Open();
                 string path = filePath.Text;
                 AbstractNode fileNode = FileUtils.getFileTreeByDirectoryPath(path);

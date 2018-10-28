@@ -31,7 +31,7 @@ namespace DirectoryFileBrowser.Views.Archive
             textBlockFullName.Text = fullName;
             try
             {
-                MySqlConnection con = new MySqlConnection("Server=127.0.0.1;Database=hw01;User ID=root;Password=;SslMode=none;Convert Zero Datetime=True");
+                MySqlConnection con = new MySqlConnection(DBManager.DefaultConnectionString);
                 con.Open();
                 MySqlCommand userQueries = new MySqlCommand("SELECT queryId, path, date FROM query WHERE userId = " + id, con);
                 userQueries.CommandType = CommandType.Text;

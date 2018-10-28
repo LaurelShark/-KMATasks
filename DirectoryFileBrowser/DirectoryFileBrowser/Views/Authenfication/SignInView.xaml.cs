@@ -51,7 +51,7 @@ namespace DirectoryFileBrowser.Views
                 {
                     string login = textBoxLogin.Text;
                     string password = textBoxPassword.Text;
-                    MySqlConnection con = new MySqlConnection("Server=127.0.0.1;Database=hw01;User ID=root;Password=;SslMode=none");
+                    MySqlConnection con = new MySqlConnection(DBManager.DefaultConnectionString);
                     con.Open();
                     MySqlCommand cmd = new MySqlCommand("Select * from User where login='" + login + "'  and password='" + password + "'", con);
                     cmd.CommandType = CommandType.Text;
