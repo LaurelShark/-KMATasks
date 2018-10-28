@@ -1,0 +1,28 @@
+﻿BUG REPORT
+
+
+Bug #1
+
+Steps to reproduce:
+1. Sign in.
+2. Search by path.
+3. Search by path for the second time.
+4. Open Path history
+
+Actual result:
+Only first query is shown in history.
+Expected result:
+Both queries are shown.
+
+
+Bug #2
+
+Steps to reproduce:
+1. Sign in
+2. Search by path with cyrrilic symbols
+3. Open Path history
+
+Actual result:
+Cyrrilic symbols are shown as '?????'
+Expected result:
+Cyrrilic symbols are shown correspondingly
