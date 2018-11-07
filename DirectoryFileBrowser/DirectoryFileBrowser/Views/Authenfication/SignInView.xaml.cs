@@ -1,10 +1,12 @@
 ﻿using DirectoryFileBrowser.Managers;
 using DirectoryFileBrowser.Models;
 using DirectoryFileBrowser.Tools;
+using DirectoryFileBrowser.ViewModels;
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace DirectoryFileBrowser.Views
 {
@@ -17,9 +19,16 @@ namespace DirectoryFileBrowser.Views
         public SignInView()
         {
             InitializeComponent();
+            var signInViewModel = new SignInViewModel();
+            DataContext = signInViewModel;
         }
         #endregion
 
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (this.DataContext != null)
+                ((SignInViewModel)this.DataContext).Password = ((PasswordBox)sender).Password; 
+        }
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {

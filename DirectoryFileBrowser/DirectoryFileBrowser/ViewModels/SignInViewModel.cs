@@ -4,8 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace DirectoryFileBrowser.ViewModels
@@ -33,37 +35,43 @@ namespace DirectoryFileBrowser.ViewModels
             }
         }
 
-        public string Password
+        public string Password { private get { return _password; } set { _password = value;  } }
+
+        public ICommand SignInCommand {
+            get { return _signInCommand ?? (_signInCommand = new BindingCommand<object>(SignInExecute, SignInCanExecute)); }
+        }
+
+        public ICommand ExitInCommand
         {
-            get { return _password; }
-            set
-            {
-                _password = value;
-                OnPropertyChanged();
-            }
+            get { return _exitCommand ?? (_exitCommand = new BindingCommand<object>(ExitExecute, (obj) => true)); }
         }
 
         public object NavigationManagers { get; private set; }
         #endregion
-
-
 
         private bool SignInCanExecute(object obj)
         {
             return !String.IsNullOrWhiteSpace(_login) && !String.IsNullOrWhiteSpace(_password);
         }
 
-        private void ExitCommand(object obj)
+        private void SignInExecute(object obj) {
+            MessageBox.Show("Sign in");
+        }
+
+        private void ExitExecute(object obj)
         {
             MessageBox.Show("ShutDown");
             Environment.Exit(1);
         }
 
-        private void OnPropertyChanged()
-        {
-            throw new NotImplementedException();
-        }
-
+        #region EventsAndHandlers
+        #region PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
+        internal virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
+        #endregion
     }
 }

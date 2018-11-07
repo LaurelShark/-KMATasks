@@ -10,29 +10,40 @@ namespace DirectoryFileBrowser.Tools
     public class BindingCommand<T> : ICommand
     {
         #region Fields
-        readonly Action<T> _execute;
-        readonly Predicate<T> _canExecute;
-
-        public event EventHandler CanExecuteChanged;
+        readonly Action<T> _action;
+        readonly Predicate<T> _predicate;
+        
         #endregion
 
-        public BindingCommand(Action<T> execute, Predicate<T> canExecute)
+        public BindingCommand(Action<T> action, Predicate<T> canExecute)
         {
-            if (execute != null)
-                _execute = execute;
+            if (action != null)
+                _action = action;
             else
-                throw new ArgumentNullException(nameof(execute));
-            _canExecute = canExecute;
+                throw new ArgumentNullException(nameof(action));
+            _predicate = canExecute;
         }
 
         public bool CanExecute(object parameter)
         {
-            throw new NotImplementedException();
+            return _predicate.Invoke((T)parameter);
         }
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            _action((T)parameter);
         }
+
+        ///<summary>
+        ///Occurs when changes occur that affect whether or not the command should execute.
+        ///</summary>
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
+
+
+
     }
 }

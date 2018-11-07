@@ -88,7 +88,9 @@
     <Compile Include="Managers\SessionManager.cs" />
     <Compile Include="Tools\Encrypting.cs" />
     <Compile Include="Tools\IContentWindow.cs" />
+    <Compile Include="Tools\BindingCommand.cs" />
     <Compile Include="Tools\NavigationModel.cs" />
+    <Compile Include="ViewModels\SignInViewModel.cs" />
     <Compile Include="Views\Archive\ArchiveView.xaml.cs">
       <DependentUpon>ArchiveView.xaml</DependentUpon>
     </Compile>
