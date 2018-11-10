@@ -113,5 +113,18 @@ namespace DirectoryFileBrowser.Models
         }
         #endregion
 
+        public bool PasswordMatch(string pass)
+        {
+            try
+            {
+                string password = Encrypting.ConvertToMd5(pass);
+                return password == pass;
+            } catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
+
     }
 }

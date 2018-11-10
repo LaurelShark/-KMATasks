@@ -1,4 +1,5 @@
 ﻿using DirectoryFileBrowser.Managers;
+using DirectoryFileBrowser.Models;
 using DirectoryFileBrowser.Tools;
 using System;
 using System.Collections.Generic;
@@ -57,8 +58,45 @@ namespace DirectoryFileBrowser.ViewModels
             return !String.IsNullOrWhiteSpace(_login) && !String.IsNullOrWhiteSpace(_password);
         }
 
-        private void SignInExecute(object obj) {
+        private async void SignInExecute(object obj) {
             MessageBox.Show("Sign in");
+            //LoaderManager.Instance.ShowLoader();
+            var res = await Task.Run(() =>
+            {
+                User currUser;
+                try
+                {
+                    currUser = DBManager.GetUserByLogin(_login);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                    return false;
+                }
+                if (currUser == null)
+                {
+                    MessageBox.Show("User doesnt exist");
+                    return false;
+                }
+                try
+                {
+                    if (!currUser.PasswordMatch(_password))
+                    {
+                        MessageBox.Show("Wrong password");
+                        return false;
+                    }
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Password validation error!", e.Message);
+                    return false;
+                }
+                SessionManager.user = currUser;
+                return true;
+            });
+           // LoaderManager.Instance.HideLoader();
+            if (res)
+                NavigationManager.Instance.Navigate(ModesEnum.Tree);
         }
 
         private void ExitExecute(object obj)
