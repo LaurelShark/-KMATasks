@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using DirectoryFileBrowser.Tools;
 using DirectoryFileBrowser.Managers;
+using DirectoryFileBrowser.ViewModels;
 
 namespace DirectoryFileBrowser
 {
@@ -15,7 +16,9 @@ namespace DirectoryFileBrowser
             InitializeComponent();
             var navigationModel = new NavigationModel(this);
             NavigationManager.Instance.Initialize(navigationModel);
-            navigationModel.Navigate(ModesEnum.SignIn);
+            MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
+            DataContext = mainWindowViewModel;
+            mainWindowViewModel.StartApplication();
         }
 
         private void button_Click(object sender, RoutedEventArgs e)

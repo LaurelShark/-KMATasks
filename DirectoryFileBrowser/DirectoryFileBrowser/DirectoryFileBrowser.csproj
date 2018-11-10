@@ -96,6 +96,7 @@
     <Compile Include="Tools\ILoaderOwner.cs" />
     <Compile Include="Tools\NavigationModel.cs" />
     <Compile Include="ViewModels\ArchiveViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
     <Compile Include="ViewModels\WindowTreeViewModel.cs" />
     <Compile Include="Views\Archive\ArchiveView.xaml.cs">

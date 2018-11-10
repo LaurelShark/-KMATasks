@@ -59,7 +59,7 @@ namespace DirectoryFileBrowser.ViewModels
         }
 
         private async void SignInExecute(object obj) {
-            MessageBox.Show("Sign in");
+            //MessageBox.Show("Sign in");
             LoaderManager.Instance.ShowLoader();
             var res = await Task.Run(() =>
             {
