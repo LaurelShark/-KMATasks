@@ -1,4 +1,5 @@
 ﻿using DirectoryFileBrowser.Models;
+using DirectoryFileBrowser.Tools;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,9 +8,14 @@ namespace DirectoryFileBrowser.Managers
     class DBManager
     {
 
-        private static string defaultConnectionString = "Server=127.0.0.1;Database=hw01;User ID=root;Password=;SslMode=none;Convert Zero Datetime=True";
+        //private static string defaultConnectionString = "Server=127.0.0.1;Database=hw01;User ID=root;Password=;SslMode=none;Convert Zero Datetime=True";
 
-        public static string DefaultConnectionString { get { return defaultConnectionString; } }
+        // public static string DefaultConnectionString { get { return defaultConnectionString; } }
+
+        static DBManager()
+        {
+            Users = SerializationManager.Deserialize<List<User>>(FileFolderHelper.StorageFilePath) ?? new List<User>();
+        }
 
         private static List<User> Users = new List<User>();
 
