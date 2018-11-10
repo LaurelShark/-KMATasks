@@ -36,7 +36,9 @@ namespace DirectoryFileBrowser.ViewModels
         }
 
         public string Password { private get { return _password; } set { _password = value;  } }
+        #endregion
 
+        #region Commands
         public ICommand SignInCommand {
             get { return _signInCommand ?? (_signInCommand = new BindingCommand<object>(SignInExecute, SignInCanExecute)); }
         }
@@ -48,6 +50,7 @@ namespace DirectoryFileBrowser.ViewModels
 
         public object NavigationManagers { get; private set; }
         #endregion
+
 
         private bool SignInCanExecute(object obj)
         {
