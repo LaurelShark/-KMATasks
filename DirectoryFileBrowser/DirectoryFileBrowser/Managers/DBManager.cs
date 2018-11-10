@@ -1,20 +1,18 @@
 ﻿using DirectoryFileBrowser.Models;
 using DirectoryFileBrowser.Tools;
-<<<<<<< HEAD
-using System.Collections.Generic;
-using System.Linq;
-=======
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
->>>>>>> 9675c0c6c94304c04014e887cc24bec102ae0d2e
+
 
 namespace DirectoryFileBrowser.Managers
 {
     class DBManager
     {
 
-<<<<<<< HEAD
+
+
         //private static string defaultConnectionString = "Server=127.0.0.1;Database=hw01;User ID=root;Password=;SslMode=none;Convert Zero Datetime=True";
 
         // public static string DefaultConnectionString { get { return defaultConnectionString; } }
@@ -30,11 +28,11 @@ namespace DirectoryFileBrowser.Managers
         {
             return Users.Any(u => u.Login == login);
         }
-=======
+
         private static string defaultConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|dfb.mdf;Integrated Security=True";
 
         internal static string DefaultConnectionString { get { return defaultConnectionString; } }
->>>>>>> 9675c0c6c94304c04014e887cc24bec102ae0d2e
+
 
         public static User GetUserByLogin(string login)
         {
