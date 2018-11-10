@@ -23,6 +23,7 @@ namespace DirectoryFileBrowser.ViewModels
                 return _fromArchiveToTreeView ?? (_fromArchiveToTreeView = new BindingCommand<object>(FromArchiveToTreeViewExecute, (obj) => true));
             }
         }
+        #endregion
 
         private void FromArchiveToTreeViewExecute(object obj)
         {

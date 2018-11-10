@@ -23,7 +23,7 @@ namespace DirectoryFileBrowser.ViewModels
         {
             get
             {
-                return _startSearchCommand ?? (_startSearchCommand = new BindingCommand<object>(StartSearchExecute, (obj) => true);
+                return _startSearchCommand ?? (_startSearchCommand = new BindingCommand<object>(StartSearchExecute, (obj) => true));
             }
         }
 
@@ -31,7 +31,7 @@ namespace DirectoryFileBrowser.ViewModels
         {
             get
             {
-                return _showPathsCommand ?? (_showPathsCommand = new BindingCommand<object>(ShowPathsExecute, (obj) => true);
+                return _showPathsCommand ?? (_showPathsCommand = new BindingCommand<object>(ShowPathsExecute, (obj) => true));
             }
         }
 
@@ -39,7 +39,7 @@ namespace DirectoryFileBrowser.ViewModels
         {
             get
             {
-                return _browseFileSystemCommand ?? (_browseFileSystemCommand = new BindingCommand<object>(BrowseFileSystemExecute, (obj) => true);
+                return _browseFileSystemCommand ?? (_browseFileSystemCommand = new BindingCommand<object>(BrowseFileSystemExecute, (obj) => true));
             }
         }
         #endregion
