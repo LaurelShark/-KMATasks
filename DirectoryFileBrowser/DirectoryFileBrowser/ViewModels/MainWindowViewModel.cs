@@ -50,7 +50,10 @@ namespace DirectoryFileBrowser.ViewModels
 
         internal void StartApplication()
         {
-            NavigationManager.Instance.Navigate(SessionManager.user != null ? throw new Exception() : ModesEnum.SignIn);
+            if (SessionManager.user != null)
+                throw new Exception();
+            else
+                NavigationManager.Instance.Navigate(ModesEnum.SignIn);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
