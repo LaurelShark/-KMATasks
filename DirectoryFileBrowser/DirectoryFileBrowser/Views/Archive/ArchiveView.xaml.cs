@@ -18,6 +18,8 @@ namespace DirectoryFileBrowser.Views.Archive
         {
             InitializeComponent();
             textBlockFullName.Text = fullName;
+        }
+        /*
             try
             {
                 MySqlConnection con = new MySqlConnection(DBManager.DefaultConnectionString);
@@ -37,7 +39,7 @@ namespace DirectoryFileBrowser.Views.Archive
             {
                 MessageBox.Show(ex.Message);
             }
-        }
+        */
 
         private void button_Click(object sender, RoutedEventArgs e)
         {

@@ -23,6 +23,7 @@ namespace DirectoryFileBrowser.Views.Tree
 
         private void findButton_Click(object sender, RoutedEventArgs e)
         {
+            /*
             try
             {
                 MySqlConnection con = new MySqlConnection(DBManager.DefaultConnectionString);
@@ -45,6 +46,7 @@ namespace DirectoryFileBrowser.Views.Tree
             {
                 MessageBox.Show(exception.Message);
             }
+            */
         }
 
         private TreeViewItem buildTreeNode(AbstractNode fileNode)

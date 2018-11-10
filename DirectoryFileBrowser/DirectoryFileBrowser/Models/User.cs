@@ -27,7 +27,7 @@ namespace DirectoryFileBrowser.Models
             {
                 return id;
             }
-            set
+            internal set
             {
                 id = value;
             }
@@ -38,7 +38,7 @@ namespace DirectoryFileBrowser.Models
             {
                 return name;
             }
-            set
+            internal set
             {
                 name = value;
             }
@@ -49,7 +49,7 @@ namespace DirectoryFileBrowser.Models
             {
                 return surname;
             }
-            set
+            internal set
             {
                 surname = value;
             }
@@ -83,7 +83,7 @@ namespace DirectoryFileBrowser.Models
             {
                 return password;
             }
-            private set
+            internal set
             {
                 password = value;
             }
@@ -113,12 +113,12 @@ namespace DirectoryFileBrowser.Models
         }
         #endregion
 
-        public bool PasswordMatch(string pass)
+        public bool PasswordMatch(string inputPwd)
         {
             try
             {
-                string password = Encrypting.ConvertToMd5(pass);
-                return password == pass;
+                string hashedinputPwd = Encrypting.ConvertToMd5(inputPwd);
+                return hashedinputPwd.Equals(Password);
             } catch (Exception e)
             {
                 MessageBox.Show(e.Message);
