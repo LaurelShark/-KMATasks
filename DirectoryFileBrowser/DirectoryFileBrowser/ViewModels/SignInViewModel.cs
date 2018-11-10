@@ -60,7 +60,7 @@ namespace DirectoryFileBrowser.ViewModels
 
         private async void SignInExecute(object obj) {
             MessageBox.Show("Sign in");
-            //LoaderManager.Instance.ShowLoader();
+            LoaderManager.Instance.ShowLoader();
             var res = await Task.Run(() =>
             {
                 User currUser;
@@ -94,7 +94,7 @@ namespace DirectoryFileBrowser.ViewModels
                 SessionManager.user = currUser;
                 return true;
             });
-           // LoaderManager.Instance.HideLoader();
+            LoaderManager.Instance.HideLoader();
             if (res)
                 NavigationManager.Instance.Navigate(ModesEnum.Tree);
         }
