@@ -39,7 +39,7 @@ namespace DirectoryFileBrowser.ViewModels
         {
             get
             {
-                return _browseFileSystemCommand ?? (_browseFileSystemCommand = new BindingCommand<object>(BrowseFileSystemCommand, (obj) => true);
+                return _browseFileSystemCommand ?? (_browseFileSystemCommand = new BindingCommand<object>(BrowseFileSystemExecute, (obj) => true);
             }
         }
         #endregion
@@ -57,7 +57,7 @@ namespace DirectoryFileBrowser.ViewModels
 
         private void ShowPathsExecute(object obj) { }
 
-        private void BrowseFileSystemCommand(object obj) { }
+        private void BrowseFileSystemExecute(object obj) { }
 
     }
 }
