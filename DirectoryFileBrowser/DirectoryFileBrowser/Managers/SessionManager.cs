@@ -16,13 +16,7 @@ namespace DirectoryFileBrowser.Managers
         public static User CurrentUser { get; set; }
         #endregion
 
-
-        static SessionManager()
-        {
-            DeserializeLastUser();
-        }
-
-        private static void DeserializeLastUser()
+        internal static void DeserializeLastUser()
         {
             User userCandidate;
             try
@@ -44,6 +38,22 @@ namespace DirectoryFileBrowser.Managers
                 Logger.Log("Failed to relogin last user");
             else
                 CurrentUser = userCandidate;
+        }
+
+        private static FileInfo GetSessionFileInfo() {
+            FileInfo file = new FileInfo(Path.Combine(FileFolderHelper.LastUserFilePath));
+            return file;
+        }
+
+        public static bool IsLastSessionFinished() {
+            return ! GetSessionFileInfo().Exists;
+        }
+
+        public static void DestroyLastSession() {
+            if (IsLastSessionFinished())
+            {
+                GetSessionFileInfo().Delete();
+            }
         }
     }
 }

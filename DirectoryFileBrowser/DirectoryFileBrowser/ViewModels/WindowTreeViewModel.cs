@@ -92,7 +92,7 @@ namespace DirectoryFileBrowser.ViewModels
                 try
                 {
                     Thread.Sleep(1000);
-                    FileFolderHelper.FileDelete((string)FileFolderHelper.LogFilepath);
+                    SessionManager.DestroyLastSession();
                 } catch (Exception e)
                 {
                     MessageBox.Show(e.Message);

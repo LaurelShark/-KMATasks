@@ -66,14 +66,17 @@ namespace DirectoryFileBrowser.ViewModels
                     Thread.Sleep(1000);
                     currUser = DBManager.GetUserByLogin(_login);
                     DBManager.AddUser(currUser);
+                    Logger.Log("Logged in. Session new started");
                 }
                 catch (Exception e)
                 {
                     MessageBox.Show(e.Message);
+                    Logger.Log("Login failed", e);
                     return false;
                 }
                 if (currUser == null)
                 {
+                    Logger.Log("User doesnt exist");
                     MessageBox.Show("User doesnt exist");
                     return false;
                 }
@@ -81,12 +84,14 @@ namespace DirectoryFileBrowser.ViewModels
                 {
                     if (!currUser.PasswordMatch(_password))
                     {
+                        Logger.Log("Passwords do not match");
                         MessageBox.Show("Wrong password");
                         return false;
                     }
                 }
                 catch (Exception e)
                 {
+                    Logger.Log("Password validation error!", e);
                     MessageBox.Show("Password validation error!", e.Message);
                     return false;
                 }
@@ -100,6 +105,7 @@ namespace DirectoryFileBrowser.ViewModels
 
         private void ExitExecute(object obj)
         {
+            Logger.Log("Exit execute");
             MessageBox.Show("ShutDown");
             Environment.Exit(1);
         }

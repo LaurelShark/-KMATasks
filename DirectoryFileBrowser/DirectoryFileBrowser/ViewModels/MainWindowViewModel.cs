@@ -46,15 +46,23 @@ namespace DirectoryFileBrowser.ViewModels
 
         internal void StartApplication()
         {
-            if (SessionManager.user != null)
-                throw new Exception();
-            else
+            if (SessionManager.IsLastSessionFinished())
+            {
+                Logger.Log("Manual login");
                 NavigationManager.Instance.Navigate(ModesEnum.SignIn);
+            }
+            else
+            {
+                Logger.Log("Auto login: previous session was not finished");
+                SessionManager.DeserializeLastUser();
+                NavigationManager.Instance.Navigate(ModesEnum.Tree);
+            }
         }
 
         public void LogoutCommand()
         {
             MessageBox.Show("logout");
+            Logger.Log("Logged out");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

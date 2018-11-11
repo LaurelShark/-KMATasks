@@ -35,6 +35,7 @@ namespace DirectoryFileBrowser.ViewModels
         #endregion
 
         internal ArchiveViewModel() {
+            Logger.Log("Initializing history query view");
             QueriesHistory = new ObservableCollection<ViewableQuery>();
             populateDataGrid();
         }
@@ -45,6 +46,7 @@ namespace DirectoryFileBrowser.ViewModels
         }
 
         private void populateDataGrid() {
+            Logger.Log("Populating query history...");
             DataTable table = DBManager.GetQueriesForUser(SessionManager.user);
             foreach (DataRow row in table.Rows)
             {
