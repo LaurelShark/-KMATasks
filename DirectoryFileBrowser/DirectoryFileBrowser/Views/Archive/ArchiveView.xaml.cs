@@ -22,13 +22,5 @@ namespace DirectoryFileBrowser.Views.Archive
             var _archiveViewModel = new ArchiveViewModel();
             DataContext = _archiveViewModel;
         }
-        /*
-            
-        */
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-           // NavigationManager.Instance.Navigate(ModesEnum.Tree);
-        }
     }
 }

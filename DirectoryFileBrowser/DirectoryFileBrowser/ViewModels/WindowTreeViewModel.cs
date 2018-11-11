@@ -1,16 +1,10 @@
 ﻿using DirectoryFileBrowser.Managers;
 using DirectoryFileBrowser.Tools;
 using DirectoryFileBrowser.Views.Tree;
-using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -72,7 +66,7 @@ namespace DirectoryFileBrowser.ViewModels
             }
         }
 
-        public ICommand ShowPathsComand
+        public ICommand ShowPathsCommand
         {
             get
             {
@@ -128,26 +122,11 @@ namespace DirectoryFileBrowser.ViewModels
         private void ShowPathsExecute(object obj) {
             try
             {
-                MySqlConnection con = new MySqlConnection(DBManager.DefaultConnectionString);
-                con.Open();
-                MySqlCommand userQueries = new MySqlCommand("SELECT id, path, date FROM queries WHERE userId = " + id, con);
-                userQueries.CommandType = CommandType.Text;
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
-                adapter.SelectCommand = userQueries;
-                userQueries.ExecuteNonQuery();
-                DataTable dt = new DataTable("Queries");
-                adapter.Fill(dt);
-               // dataGrid.ItemsSource = dt.DefaultView;
-                adapter.Update(dt);
-                con.Close();
+                NavigationManager.Instance.Navigate(ModesEnum.Archive);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                NavigationManager.Instance.Navigate(ModesEnum.Archive);
             }
         }
 

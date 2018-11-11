@@ -2,13 +2,13 @@
 
 namespace DirectoryFileBrowser.Models
 {
-    class Query
+    public class Query
     {
         #region Fields
         private int userId;
         private int queryId;
         private string path;
-        private DateTime date;
+        private string date;
         #endregion
 
         #region Properties
@@ -26,11 +26,16 @@ namespace DirectoryFileBrowser.Models
             get { return path; }
             private set { path = value; }
         }
-        public DateTime Date
+        public string Date
         {
             get { return date; }
             private set { date = value; }
         }
         #endregion
+
+        internal Query(String path, DateTime date) {
+            Path = path;
+            Date = date.ToString();
+        }
     }
 }

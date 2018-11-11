@@ -103,5 +103,20 @@ namespace DirectoryFileBrowser.Managers
             ins.ExecuteNonQuery();
             con.Close();
         }
+
+        public static DataTable GetQueriesForUser(User user) {
+            SqlConnection con = new SqlConnection(DBManager.DefaultConnectionString);
+            con.Open();
+            SqlCommand userQueries = new SqlCommand("SELECT id, path, date FROM queries WHERE userId = " + user.Id, con);
+            userQueries.CommandType = CommandType.Text;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.SelectCommand = userQueries;
+            userQueries.ExecuteNonQuery();
+            DataTable dt = new DataTable("Queries");
+            adapter.Fill(dt);
+            //adapter.Update(dt);
+            con.Close();
+            return dt;
+        }
     }
 }
