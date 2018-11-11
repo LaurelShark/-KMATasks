@@ -17,11 +17,11 @@ namespace DirectoryFileBrowser.ViewModels
     public class ArchiveViewModel : INotifyPropertyChanged 
     {
 
-        private ObservableCollection<Query> _myList;
+        private ObservableCollection<ViewableQuery> _queriesHistory;
 
-        public ObservableCollection<Query> MyList {
-            get { return _myList; }
-            set { _myList = value; OnPropertyChanged(); }
+        public ObservableCollection<ViewableQuery> QueriesHistory {
+            get { return _queriesHistory; }
+            set { _queriesHistory = value; }
         }
 
         #region Commands
@@ -39,7 +39,8 @@ namespace DirectoryFileBrowser.ViewModels
         #endregion
 
         internal ArchiveViewModel() {
-            init();
+            QueriesHistory = new ObservableCollection<ViewableQuery>();
+            populateDataGrid();
         }
 
         private void FromArchiveToTreeViewExecute(object obj)
@@ -47,12 +48,14 @@ namespace DirectoryFileBrowser.ViewModels
             NavigationManager.Instance.Navigate(ModesEnum.Tree);
         }
 
-        private void init() {
-            //DataTable table = DBManager.GetQueriesForUser(SessionManager.user);
-            ObservableCollection<Query> queries = new ObservableCollection<Query>();
-            queries.Add(new Query("qweqwe", DateTime.Now));
-            queries.Add(new Query("uuuuu", DateTime.Today));
-            MyList = queries;
+        private void populateDataGrid() {
+            DataTable table = DBManager.GetQueriesForUser(SessionManager.user);
+            foreach (DataRow row in table.Rows)
+            {
+                string path = row.Field<string>("path");
+                DateTime date = row.Field<DateTime>("date");
+                QueriesHistory.Add(new ViewableQuery(path, date));
+            }
         }
 
         #region EventsAndHandlers

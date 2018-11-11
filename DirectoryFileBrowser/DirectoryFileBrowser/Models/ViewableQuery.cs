@@ -2,25 +2,14 @@
 
 namespace DirectoryFileBrowser.Models
 {
-    public class Query
+    public class ViewableQuery
     {
         #region Fields
-        private int userId;
-        private int queryId;
         private string path;
         private DateTime date;
         #endregion
 
         #region Properties
-        public int UserId {
-            get { return userId; }
-            private set { userId = value; }
-        }
-        public int QueryId
-        {
-            get { return queryId; }
-            private set { queryId = value; }
-        }
         public string Path
         {
             get { return path; }
@@ -33,7 +22,8 @@ namespace DirectoryFileBrowser.Models
         }
         #endregion
 
-        internal Query(string path, DateTime date) {
+        internal ViewableQuery(string path, DateTime date)
+        {
             Path = path;
             Date = date;
         }

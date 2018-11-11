@@ -91,6 +91,7 @@
     <Compile Include="Managers\NavigationManager.cs" />
     <Compile Include="Managers\SerializationManager.cs" />
     <Compile Include="Managers\SessionManager.cs" />
+    <Compile Include="Models\ViewableQuery.cs" />
     <Compile Include="Tools\Encrypting.cs" />
     <Compile Include="Tools\FileFolderHelper.cs" />
     <Compile Include="Tools\IContentWindow.cs" />
