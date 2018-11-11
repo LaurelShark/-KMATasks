@@ -66,5 +66,10 @@ namespace DirectoryFileBrowser.Views.Tree
                     break;
             }
         }
+
+        private void logoutButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
