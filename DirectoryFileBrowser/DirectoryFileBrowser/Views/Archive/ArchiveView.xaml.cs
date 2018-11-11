@@ -1,16 +1,8 @@
 ﻿using DirectoryFileBrowser.Managers;
-using DirectoryFileBrowser.Tools;
 using DirectoryFileBrowser.ViewModels;
-using MySql.Data.MySqlClient;
-using System;
-using System.Data;
-using System.Windows;
 
 namespace DirectoryFileBrowser.Views.Archive
 {
-    /// <summary>
-    /// Логика взаимодействия для ArchiveView.xaml
-    /// </summary>
     public partial class ArchiveView 
     {
         int id = SessionManager.user.Id;

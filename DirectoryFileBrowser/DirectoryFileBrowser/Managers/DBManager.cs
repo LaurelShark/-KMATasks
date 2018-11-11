@@ -11,9 +11,6 @@ namespace DirectoryFileBrowser.Managers
     class DBManager
     {
         private static List<User> Users = new List<User>();
-        //private static string defaultConnectionString = "Server=127.0.0.1;Database=hw01;User ID=root;Password=;SslMode=none;Convert Zero Datetime=True";
-
-        // public static string DefaultConnectionString { get { return defaultConnectionString; } }
 
         static DBManager()
         {
@@ -91,7 +88,6 @@ namespace DirectoryFileBrowser.Managers
         }
 
         public static void WriteQueryForUser(User user, string dirPath) {
-
             SqlConnection con = new SqlConnection(DBManager.DefaultConnectionString);
             con.Open();
             DateTime dateTime = DateTime.Now;
@@ -114,7 +110,6 @@ namespace DirectoryFileBrowser.Managers
             userQueries.ExecuteNonQuery();
             DataTable dt = new DataTable("Queries");
             adapter.Fill(dt);
-            //adapter.Update(dt);
             con.Close();
             return dt;
         }

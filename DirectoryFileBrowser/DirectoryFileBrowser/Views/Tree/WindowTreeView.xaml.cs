@@ -1,17 +1,9 @@
 ﻿using DirectoryFileBrowser.Managers;
-using DirectoryFileBrowser.Tools;
 using DirectoryFileBrowser.ViewModels;
-using MySql.Data.MySqlClient;
-using System;
-using System.Data;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace DirectoryFileBrowser.Views.Tree
 {
-    /// <summary>
-    /// Логика взаимодействия для WindowTree.xaml
-    /// </summary>
     public partial class WindowTreeView
     {
 
