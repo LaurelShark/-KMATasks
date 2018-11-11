@@ -104,22 +104,32 @@ namespace DirectoryFileBrowser.ViewModels
             });
             LoaderManager.Instance.HideLoader();
             MessageBox.Show("successfully logged out");
-            NavigationManager.Instance.Navigate(ModesEnum.SignIn);
+            if (res)
+                NavigationManager.Instance.Navigate(ModesEnum.SignIn);
         }
 
-        private void StartSearchExecute(object obj)
+        private async void StartSearchExecute(object obj)
         {
-            try
+            LoaderManager.Instance.ShowLoader();
+            AbstractNode fileNode = null;
+            var res = await Task.Run(() => {
+                try {
+                    string path = DirPath;
+                    fileNode = FileUtils.getFileTreeByDirectoryPath(path);
+                    DBManager.WriteQueryForUser(SessionManager.user, path.Replace("\\", "\\\\"));
+                    return true;
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                        return false;
+                }
+            });
+            LoaderManager.Instance.HideLoader();
+            if (res)
             {
-                string path = DirPath;
-                AbstractNode fileNode = FileUtils.getFileTreeByDirectoryPath(path);
-                DBManager.WriteQueryForUser(SessionManager.user, path.Replace("\\", "\\\\"));
                 TreeViewItem viewNode = BuildTreeViewItem(fileNode);
                 WindowTreeView.PopulateUITree(viewNode);
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
             }
         }
 
