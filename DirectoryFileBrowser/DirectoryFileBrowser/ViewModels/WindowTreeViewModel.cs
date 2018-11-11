@@ -81,6 +81,7 @@ namespace DirectoryFileBrowser.ViewModels
 
         private void StartSearchExecute(object obj)
         {
+            MessageBox.Show("asdf");
             try
             {
                 MySqlConnection con = new MySqlConnection(DBManager.DefaultConnectionString);
@@ -92,7 +93,7 @@ namespace DirectoryFileBrowser.ViewModels
                 _mainFileViewNode.Items.Add(viewNode);
                 DateTime dateTime = DateTime.Now;
                 string date = dateTime.ToString("yyyy-MM-dd H:mm:ss");
-                MySqlCommand ins = new MySqlCommand("INSERT INTO query(userId, path, date) VALUES (" + id + ",'" + path.Replace("\\", "\\\\") + "', '" + date + "')", con);
+                MySqlCommand ins = new MySqlCommand("INSERT INTO queries(userId, path, date) VALUES (" + id + ",'" + path.Replace("\\", "\\\\") + "', '" + date + "')", con);
                 ins.CommandType = CommandType.Text;
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 adapter.InsertCommand = ins;
@@ -122,12 +123,12 @@ namespace DirectoryFileBrowser.ViewModels
             {
                 MySqlConnection con = new MySqlConnection(DBManager.DefaultConnectionString);
                 con.Open();
-                MySqlCommand userQueries = new MySqlCommand("SELECT queryId, path, date FROM query WHERE userId = " + id, con);
+                MySqlCommand userQueries = new MySqlCommand("SELECT id, path, date FROM queries WHERE userId = " + id, con);
                 userQueries.CommandType = CommandType.Text;
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 adapter.SelectCommand = userQueries;
                 userQueries.ExecuteNonQuery();
-                DataTable dt = new DataTable("Query");
+                DataTable dt = new DataTable("Queries");
                 adapter.Fill(dt);
                // dataGrid.ItemsSource = dt.DefaultView;
                 adapter.Update(dt);
@@ -141,6 +142,7 @@ namespace DirectoryFileBrowser.ViewModels
         }
 
         private void BrowseFileSystemExecute(object obj) {
+            MessageBox.Show("ssssssasdf");
             var fileDialog = new System.Windows.Forms.FolderBrowserDialog();
             var result = fileDialog.ShowDialog();
             switch (result)

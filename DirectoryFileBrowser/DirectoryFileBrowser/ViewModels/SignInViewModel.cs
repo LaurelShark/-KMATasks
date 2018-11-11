@@ -44,7 +44,7 @@ namespace DirectoryFileBrowser.ViewModels
             get { return _signInCommand ?? (_signInCommand = new BindingCommand<object>(SignInExecute, SignInCanExecute)); }
         }
 
-        public ICommand ExitInCommand
+        public ICommand ExitCommand
         {
             get { return _exitCommand ?? (_exitCommand = new BindingCommand<object>(ExitExecute, (obj) => true)); }
         }

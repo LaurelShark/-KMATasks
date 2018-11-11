@@ -15,9 +15,10 @@
         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Height="28" Margin="32,55,0,0" TextWrapping="Wrap" Text="Write your path here:" VerticalAlignment="Top" Width="118"/>
         <TextBox x:Name="filePath" HorizontalAlignment="Left" Height="29" Margin="155,55,0,0" TextWrapping="Wrap" Text="(your path here)" VerticalAlignment="Top" Width="483"/>
         <Button x:Name="findButton" Content="Start search" HorizontalAlignment="Left" Height="27" Margin="688,56,0,0" VerticalAlignment="Top" Width="112" Command="{Binding StartSearchCommand}"/>
-        <TreeView Name="mainFileViewNode" HorizontalAlignment="Left" Height="380" Margin="32,89,0,0" VerticalAlignment="Top" Width="778"/>
+        <TreeView Name="mainFileViewNode"  HorizontalAlignment="Left" Height="380" Margin="32,89,0,0" VerticalAlignment="Top" Width="778"/>
         <Button x:Name="showHistory" Content="Show paths &#xD;&#xA;    history" HorizontalAlignment="Left" Height="38" Margin="688,10,0,0" VerticalAlignment="Top" Width="112" Command="{Binding ShowPathsCommand}"/>
-        <Button x:Name="browseButton" Content="..." HorizontalAlignment="Left" Margin="643,55,0,0" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.68,0.978" Height="28" Command="{Binding BrowseFileSystemCommand}"/>
+        <Button x:Name="browseButton" Content="..." HorizontalAlignment="Left" Margin="643,55,0,0" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.68,0.978" Height="28" Command="{Binding BrowseFileSystemCommand}" />
 
+        
     </Grid>
 </UserControl>

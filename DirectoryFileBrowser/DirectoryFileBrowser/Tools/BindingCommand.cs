@@ -12,8 +12,15 @@ namespace DirectoryFileBrowser.Tools
         #region Fields
         readonly Action<T> _action;
         readonly Predicate<T> _predicate;
-        
+
         #endregion
+
+        #region Constructors
+       /* public BindingCommand(Action<T> action)
+            : this(action, null)
+        {
+        }
+        */
 
         public BindingCommand(Action<T> action, Predicate<T> canExecute)
         {
@@ -23,6 +30,7 @@ namespace DirectoryFileBrowser.Tools
                 throw new ArgumentNullException(nameof(action));
             _predicate = canExecute;
         }
+        #endregion
 
         public bool CanExecute(object parameter)
         {

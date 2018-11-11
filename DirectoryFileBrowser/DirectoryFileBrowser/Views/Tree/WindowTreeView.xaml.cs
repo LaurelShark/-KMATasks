@@ -1,5 +1,6 @@
 ﻿using DirectoryFileBrowser.Managers;
 using DirectoryFileBrowser.Tools;
+using DirectoryFileBrowser.ViewModels;
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
@@ -19,6 +20,8 @@ namespace DirectoryFileBrowser.Views.Tree
             InitializeComponent();
             string userName = SessionManager.user.Name + " " + SessionManager.user.Surname;  
             textBlockFullName.Text = userName;
+            var windowTreeViewModel = new WindowTreeViewModel();
+            DataContext = windowTreeViewModel;
         }
 
         private void findButton_Click(object sender, RoutedEventArgs e)
