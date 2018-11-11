@@ -1,5 +1,6 @@
 ﻿using DirectoryFileBrowser.Managers;
 using DirectoryFileBrowser.Tools;
+using DirectoryFileBrowser.Views.Tree;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace DirectoryFileBrowser.ViewModels
         #region Fields
         int id = SessionManager.user.Id;
         private TreeView _mainFileViewNode;
-        private TextBox _filePath; 
+        private string _dirPath; 
         
         #endregion
 
@@ -42,12 +43,12 @@ namespace DirectoryFileBrowser.ViewModels
             set { _mainFileViewNode = value; OnPropertyChanged(); }
         }
 
-        public TextBox FilePath
+        public string DirPath
         {
-            get { return _filePath; }
+            get { return _dirPath; }
             set
             {
-                _filePath = value;
+                _dirPath = value; OnPropertyChanged();
             }
         }
          
@@ -81,24 +82,13 @@ namespace DirectoryFileBrowser.ViewModels
 
         private void StartSearchExecute(object obj)
         {
-            MessageBox.Show("asdf");
             try
             {
-                MySqlConnection con = new MySqlConnection(DBManager.DefaultConnectionString);
-                con.Open();
-                string path = _filePath.Text;
+                string path = DirPath;
                 AbstractNode fileNode = FileUtils.getFileTreeByDirectoryPath(path);
-                _mainFileViewNode.Items.Clear();
-                TreeViewItem viewNode = buildTreeNode(fileNode);
-                _mainFileViewNode.Items.Add(viewNode);
-                DateTime dateTime = DateTime.Now;
-                string date = dateTime.ToString("yyyy-MM-dd H:mm:ss");
-                MySqlCommand ins = new MySqlCommand("INSERT INTO queries(userId, path, date) VALUES (" + id + ",'" + path.Replace("\\", "\\\\") + "', '" + date + "')", con);
-                ins.CommandType = CommandType.Text;
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
-                adapter.InsertCommand = ins;
-                ins.ExecuteNonQuery();
-                con.Close();
+                DBManager.WriteQueryForUser(SessionManager.user, path.Replace("\\", "\\\\"));
+                TreeViewItem viewNode = BuildTreeViewItem(fileNode);
+                WindowTreeView.PopulateUITree(viewNode);
             }
             catch (Exception exception)
             {
@@ -106,13 +96,13 @@ namespace DirectoryFileBrowser.ViewModels
             }
         }
 
-        private TreeViewItem buildTreeNode(AbstractNode fileNode)
+        private TreeViewItem BuildTreeViewItem(AbstractNode fileNode)
         {
             TreeViewItem viewNode = new TreeViewItem();
             viewNode.Header = fileNode.Name;
             if (fileNode.isDirectory())
             {
-                Action<AbstractNode> addFileNodeToViewNode = node => viewNode.Items.Add(buildTreeNode(node));
+                Action<AbstractNode> addFileNodeToViewNode = node => viewNode.Items.Add(BuildTreeViewItem(node));
                 fileNode.Children.ForEach(addFileNodeToViewNode);
             }
             return viewNode;
@@ -142,20 +132,17 @@ namespace DirectoryFileBrowser.ViewModels
         }
 
         private void BrowseFileSystemExecute(object obj) {
-            MessageBox.Show("ssssssasdf");
             var fileDialog = new System.Windows.Forms.FolderBrowserDialog();
             var result = fileDialog.ShowDialog();
             switch (result)
             {
                 case System.Windows.Forms.DialogResult.OK:
                     var file = fileDialog.SelectedPath;
-                    _filePath.Text = file;
-                    _filePath.ToolTip = file;
+                    DirPath = file;
                     break;
                 case System.Windows.Forms.DialogResult.Cancel:
                 default:
-                    _filePath.Text = null;
-                    _filePath.ToolTip = null;
+                    DirPath = "";
                     break;
             }
         }

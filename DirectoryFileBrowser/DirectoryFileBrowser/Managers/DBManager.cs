@@ -60,13 +60,27 @@ namespace DirectoryFileBrowser.Managers
             return resultUser;
         }
 
-        public void updateLoggedInDateToCurrent(User user) {
+        public static void UpdateLoggedInDateToCurrent(User user) {
             SqlConnection con = new SqlConnection(DBManager.DefaultConnectionString);
             con.Open();
             DateTime dateTime = DateTime.Now;
             string date = dateTime.ToString("yyyy-MM-dd H:mm:ss");
             SqlCommand ins = new SqlCommand(
                 String.Format("UPDATE Users SET lastLoginDate = '{0}' WHERE id = '{1}'", date, user.Id), con);
+            ins.CommandType = CommandType.Text;
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            adapter.InsertCommand = ins;
+            ins.ExecuteNonQuery();
+            con.Close();
+        }
+
+        public static void WriteQueryForUser(User user, string dirPath) {
+
+            SqlConnection con = new SqlConnection(DBManager.DefaultConnectionString);
+            con.Open();
+            DateTime dateTime = DateTime.Now;
+            string date = dateTime.ToString("yyyy-MM-dd H:mm:ss");
+            SqlCommand ins = new SqlCommand("INSERT INTO queries(userId, path, date) VALUES (" + user.Id + ",'" + dirPath + "', '" + date + "')", con);
             ins.CommandType = CommandType.Text;
             SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.InsertCommand = ins;

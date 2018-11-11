@@ -14,7 +14,9 @@ namespace DirectoryFileBrowser.Views.Tree
     /// </summary>
     public partial class WindowTreeView
     {
-        int id = SessionManager.user.Id;
+
+        private static TreeView treeViewInstance;
+
         public WindowTreeView()
         {
             InitializeComponent();
@@ -22,49 +24,12 @@ namespace DirectoryFileBrowser.Views.Tree
             textBlockFullName.Text = userName;
             var windowTreeViewModel = new WindowTreeViewModel();
             DataContext = windowTreeViewModel;
+            treeViewInstance = mainFileViewNode;
         }
 
-        private void findButton_Click(object sender, RoutedEventArgs e)
-        {
-            /*
-            
-            */
-        }
-
-        private TreeViewItem buildTreeNode(AbstractNode fileNode)
-        {
-            TreeViewItem viewNode = new TreeViewItem();
-            viewNode.Header = fileNode.Name;
-            if (fileNode.isDirectory())
-            {
-                Action<AbstractNode> addFileNodeToViewNode = node => viewNode.Items.Add(buildTreeNode(node));
-                fileNode.Children.ForEach(addFileNodeToViewNode);
-            }
-            return viewNode;
-        }
-
-        private void showHistory_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationManager.Instance.Navigate(ModesEnum.Archive);
-        }
-
-        private void browseButton_Click(object sender, RoutedEventArgs e)
-        {
-            var fileDialog = new System.Windows.Forms.FolderBrowserDialog();
-            var result = fileDialog.ShowDialog();
-            switch (result)
-            {
-                case System.Windows.Forms.DialogResult.OK:
-                    var file = fileDialog.SelectedPath;
-                    filePath.Text = file;
-                    filePath.ToolTip = file;
-                    break;
-                case System.Windows.Forms.DialogResult.Cancel:
-                default:
-                    filePath.Text = null;
-                    filePath.ToolTip = null;
-                    break;
-            }
+        public static void PopulateUITree(TreeViewItem viewNode) {
+            treeViewInstance.Items.Clear();
+            treeViewInstance.Items.Add(viewNode);
         }
     }
 }
