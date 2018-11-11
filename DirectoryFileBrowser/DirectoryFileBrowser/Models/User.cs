@@ -5,6 +5,7 @@ using System.Windows;
 
 namespace DirectoryFileBrowser.Models
 {
+    [Serializable]
     class User
     {
 
@@ -122,6 +123,20 @@ namespace DirectoryFileBrowser.Models
             } catch (Exception e)
             {
                 MessageBox.Show(e.Message);
+                return false;
+            }
+        }
+
+        public bool CheckPassword(User userCandidate)
+        {
+            try
+            {
+                //string res = Encrypting.DecryptString(_password, PrivateKey);
+                //string res2 = Encrypting.DecryptString(userCandidate._password, PrivateKey);
+                return password == userCandidate.password;
+            }
+            catch (Exception)
+            {
                 return false;
             }
         }

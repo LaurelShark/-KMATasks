@@ -138,7 +138,10 @@ namespace DirectoryFileBrowser.ViewModels
             {
                 MessageBox.Show(ex.Message);
             }
-            NavigationManager.Instance.Navigate(ModesEnum.Archive);
+            finally
+            {
+                NavigationManager.Instance.Navigate(ModesEnum.Archive);
+            }
         }
 
         private void BrowseFileSystemExecute(object obj) {
