@@ -95,6 +95,7 @@ namespace DirectoryFileBrowser.ViewModels
                     MessageBox.Show("Password validation error!", e.Message);
                     return false;
                 }
+                DBManager.UpdateLoggedInDateToCurrent(currUser);
                 SessionManager.user = currUser;
                 return true;
             });
