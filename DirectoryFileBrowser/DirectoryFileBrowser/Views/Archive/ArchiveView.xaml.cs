@@ -20,30 +20,12 @@ namespace DirectoryFileBrowser.Views.Archive
             textBlockFullName.Text = fullName;
         }
         /*
-            try
-            {
-                MySqlConnection con = new MySqlConnection(DBManager.DefaultConnectionString);
-                con.Open();
-                MySqlCommand userQueries = new MySqlCommand("SELECT queryId, path, date FROM query WHERE userId = " + id, con);
-                userQueries.CommandType = CommandType.Text;
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
-                adapter.SelectCommand = userQueries;
-                userQueries.ExecuteNonQuery();
-                DataTable dt = new DataTable("Query");
-                adapter.Fill(dt);
-                dataGrid.ItemsSource = dt.DefaultView;
-                adapter.Update(dt);
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            
         */
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationManager.Instance.Navigate(ModesEnum.Tree);
+           // NavigationManager.Instance.Navigate(ModesEnum.Tree);
         }
     }
 }

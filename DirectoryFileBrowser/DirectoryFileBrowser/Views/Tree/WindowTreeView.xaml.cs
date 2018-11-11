@@ -24,28 +24,7 @@ namespace DirectoryFileBrowser.Views.Tree
         private void findButton_Click(object sender, RoutedEventArgs e)
         {
             /*
-            try
-            {
-                MySqlConnection con = new MySqlConnection(DBManager.DefaultConnectionString);
-                con.Open();
-                string path = filePath.Text;
-                AbstractNode fileNode = FileUtils.getFileTreeByDirectoryPath(path);
-                mainFileViewNode.Items.Clear();
-                TreeViewItem viewNode = buildTreeNode(fileNode);
-                mainFileViewNode.Items.Add(viewNode);  
-                DateTime dateTime = DateTime.Now;
-                string date = dateTime.ToString("yyyy-MM-dd H:mm:ss");
-                MySqlCommand ins = new MySqlCommand("INSERT INTO query(userId, path, date) VALUES (" + id + ",'" + path.Replace("\\", "\\\\") + "', '" + date + "')", con);
-                ins.CommandType = CommandType.Text;
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
-                adapter.InsertCommand = ins;
-                ins.ExecuteNonQuery();
-                con.Close();
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
+            
             */
         }
 

@@ -1,4 +1,5 @@
-﻿using DirectoryFileBrowser.Tools;
+﻿using DirectoryFileBrowser.Managers;
+using DirectoryFileBrowser.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace DirectoryFileBrowser.ViewModels
         private ICommand _fromArchiveToTreeView;
         #endregion
 
-        #region Commads
+        #region Commands
         public ICommand FromArchiveToTreeView
         {
             get
@@ -27,7 +28,7 @@ namespace DirectoryFileBrowser.ViewModels
 
         private void FromArchiveToTreeViewExecute(object obj)
         {
-
+            NavigationManager.Instance.Navigate(ModesEnum.Tree);
         }
     }
 }
