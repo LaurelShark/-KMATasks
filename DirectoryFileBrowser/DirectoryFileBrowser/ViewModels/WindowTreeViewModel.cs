@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -89,12 +90,25 @@ namespace DirectoryFileBrowser.ViewModels
         }
         #endregion
 
-        private void LogOutExecute(object obj)
+        private async void LogOutExecute(object obj)
         {
+            LoaderManager.Instance.ShowLoader();
+            var res = await Task.Run(() =>
+            {
+                try
+                {
+                    Thread.Sleep(1000);
+                    FileFolderHelper.FileDelete((string)FileFolderHelper.LogFilepath);
+                } catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                    return false;
+                }
+                return true;                
+            });
+            LoaderManager.Instance.HideLoader();
             MessageBox.Show("successfully logged out");
-            FileFolderHelper.FileDelete((string)FileFolderHelper.LogFilepath);
             NavigationManager.Instance.Navigate(ModesEnum.SignIn);
-            
         }
 
         private void StartSearchExecute(object obj)
