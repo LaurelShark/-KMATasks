@@ -10,7 +10,7 @@ namespace DirectoryFileBrowser.Managers
 {
     class DBManager
     {
-
+        private static List<User> Users = new List<User>();
         //private static string defaultConnectionString = "Server=127.0.0.1;Database=hw01;User ID=root;Password=;SslMode=none;Convert Zero Datetime=True";
 
         // public static string DefaultConnectionString { get { return defaultConnectionString; } }
@@ -20,7 +20,13 @@ namespace DirectoryFileBrowser.Managers
             Users = SerializationManager.Deserialize<List<User>>(FileFolderHelper.StorageFilePath) ?? new List<User>();
         }
 
-        private static List<User> Users = new List<User>();
+        internal static User CheckCachedUser(User userCandidate)
+        {
+            var userInStorage = Users.FirstOrDefault(u => u.Id == userCandidate.Id);
+            if (userInStorage != null && userInStorage.CheckPassword(userCandidate))
+                return userInStorage;
+            return null;
+        }
 
         public static bool userExists(string login)
         {
@@ -31,6 +37,16 @@ namespace DirectoryFileBrowser.Managers
 
         internal static string DefaultConnectionString { get { return defaultConnectionString; } }
 
+        internal static void AddUser(User user)
+        {
+            Users.Add(user);
+            SaveChanges();
+        }
+
+        private static void SaveChanges()
+        {
+            SerializationManager.Serialize(Users, FileFolderHelper.StorageFilePath);
+        }
 
         public static User GetUserByLogin(string login)
         {

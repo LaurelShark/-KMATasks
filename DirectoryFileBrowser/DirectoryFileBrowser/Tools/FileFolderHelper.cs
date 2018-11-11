@@ -16,7 +16,7 @@ namespace DirectoryFileBrowser.Tools
             Path.Combine(AppDataPath, "DirectoryFileBrowser");
 
         internal static readonly string LogFolderPath =
-            Path.Combine(ClientFolderPath, "Log");
+            Path.Combine(ClientFolderPath, "Gol");
 
         internal static readonly string LogFilepath = Path.Combine(LogFolderPath,
             "App_" + DateTime.Now.ToString("YYYY_MM_DD") + ".txt");
@@ -44,6 +44,22 @@ namespace DirectoryFileBrowser.Tools
             catch (Exception)
             {
 
+                throw;
+            }
+        }
+
+        internal static void FileDelete(string filePath)
+        {
+            try
+            {
+                FileInfo file = new FileInfo(filePath);
+                if (file.Exists)
+                {
+                    file.Delete();
+                }
+            }
+            catch (Exception)
+            {
                 throw;
             }
         }

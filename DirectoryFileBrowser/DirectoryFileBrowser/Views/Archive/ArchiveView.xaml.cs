@@ -1,5 +1,6 @@
 ﻿using DirectoryFileBrowser.Managers;
 using DirectoryFileBrowser.Tools;
+using DirectoryFileBrowser.ViewModels;
 using MySql.Data.MySqlClient;
 using System;
 using System.Data;
@@ -18,6 +19,8 @@ namespace DirectoryFileBrowser.Views.Archive
         {
             InitializeComponent();
             textBlockFullName.Text = fullName;
+            var _archiveViewModel = new ArchiveViewModel();
+            DataContext = _archiveViewModel;
         }
         /*
             

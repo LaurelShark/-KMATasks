@@ -56,6 +56,11 @@ namespace DirectoryFileBrowser.ViewModels
                 NavigationManager.Instance.Navigate(ModesEnum.SignIn);
         }
 
+        public void LogoutCommand()
+        {
+            MessageBox.Show("logout");
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

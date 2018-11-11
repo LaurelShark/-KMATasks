@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -30,6 +31,7 @@ namespace DirectoryFileBrowser.ViewModels
         private ICommand _startSearchCommand;
         private ICommand _showPathsCommand;
         private ICommand _browseFileSystemCommand;
+        private ICommand _logOut;
         #endregion
 
         #region Constructors
@@ -51,10 +53,17 @@ namespace DirectoryFileBrowser.ViewModels
                 _dirPath = value; OnPropertyChanged();
             }
         }
-         
+
         #endregion
 
         #region Commands
+        public ICommand LogoutCommand
+        {
+            get
+            {
+                return _logOut ?? (_logOut = new BindingCommand<object>(LogOutExecute, (obj) => true));
+            }
+        }
         public ICommand StartSearchCommand
         {
             get
@@ -79,6 +88,14 @@ namespace DirectoryFileBrowser.ViewModels
             }
         }
         #endregion
+
+        private void LogOutExecute(object obj)
+        {
+            MessageBox.Show("successfully logged out");
+            FileFolderHelper.FileDelete((string)FileFolderHelper.LogFilepath);
+            NavigationManager.Instance.Navigate(ModesEnum.SignIn);
+            
+        }
 
         private void StartSearchExecute(object obj)
         {
@@ -128,7 +145,10 @@ namespace DirectoryFileBrowser.ViewModels
             {
                 MessageBox.Show(ex.Message);
             }
-            NavigationManager.Instance.Navigate(ModesEnum.Archive);
+            finally
+            {
+                NavigationManager.Instance.Navigate(ModesEnum.Archive);
+            }
         }
 
         private void BrowseFileSystemExecute(object obj) {

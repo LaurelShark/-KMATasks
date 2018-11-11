@@ -31,5 +31,10 @@ namespace DirectoryFileBrowser.Views.Tree
             treeViewInstance.Items.Clear();
             treeViewInstance.Items.Add(viewNode);
         }
+
+        private void logoutButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
