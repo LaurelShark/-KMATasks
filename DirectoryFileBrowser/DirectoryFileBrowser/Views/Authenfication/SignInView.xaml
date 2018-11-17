@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DirectoryFileBrowser.Views"
+        xmlns:controls="clr-namespace:DirectoryFileBrowser.Tools.Controls"
         mc:Ignorable="d"
          MinHeight="500" MinWidth="700">
     <Grid>
@@ -11,8 +12,10 @@
             <ColumnDefinition Width="181*"/>
             <ColumnDefinition Width="336*"/>
         </Grid.ColumnDefinitions>
+
+        <controls:LabelAndPasswordControl  Password="{Binding Password, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Caption="Password"   Loaded="LabelAndPasswordControl_Loaded_1" ></controls:LabelAndPasswordControl>
+        
         <TextBox x:Name="textBoxLogin" HorizontalAlignment="Left" Height="23" Margin="79,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-        <PasswordBox x:Name="textBoxPassword" Grid.Column="1" HorizontalAlignment="Left" Margin="79,119,0,0" VerticalAlignment="Top" Width="120" PasswordChanged="PasswordBox_PasswordChanged"/>
         <Label x:Name="label" Content="Login&#xA;" HorizontalAlignment="Left" Margin="3,77,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
         <Label x:Name="label1" Content="Password:&#xD;&#xA;" HorizontalAlignment="Left" Margin="3,119,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.098,0.39" Grid.Column="1"/>
         <Button x:Name="SignIn" Content="Sign In" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="79,169,0,0" VerticalAlignment="Top" Width="120" Command="{Binding SignInCommand}"/>

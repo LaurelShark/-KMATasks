@@ -35,7 +35,7 @@ namespace DirectoryFileBrowser.ViewModels
             }
         }
 
-        public string Password { private get { return _password; } set { _password = value;  } }
+        public string Password { private get { return _password; } set { _password = value; OnPropertyChanged(); } }
         #endregion
 
         #region Commands
@@ -101,18 +101,27 @@ namespace DirectoryFileBrowser.ViewModels
                 return true;
             });
             LoaderManager.Instance.HideLoader();
-            if (res)
+            if (res) {
+                Password = "";
+                Login = "";
                 NavigationManager.Instance.Navigate(ModesEnum.Tree);
+            }
         }
 
         private void ExitExecute(object obj)
         {
             using (var ctx = new DirectoryBrowserContext())
             {
+                try { 
                 var student = new User() { Name = "Bill" };
 
+                
                 ctx.Users.Add(student);
                 ctx.SaveChanges();
+                }catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
             }
             Logger.Log("Exit execute");
             MessageBox.Show("ShutDown");

@@ -20,5 +20,15 @@ namespace DirectoryFileBrowser.Views
             if (this.DataContext != null)
                 ((SignInViewModel)this.DataContext).Password = ((PasswordBox)sender).Password;
         }
+
+        private void LabelAndPasswordControl_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LabelAndPasswordControl_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
