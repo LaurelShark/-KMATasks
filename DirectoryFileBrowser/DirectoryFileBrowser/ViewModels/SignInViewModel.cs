@@ -1,4 +1,5 @@
-﻿using DirectoryFileBrowser.Managers;
+﻿using DirectoryFileBrowser.Database;
+using DirectoryFileBrowser.Managers;
 using DirectoryFileBrowser.Models;
 using DirectoryFileBrowser.Tools;
 using System;
@@ -106,9 +107,16 @@ namespace DirectoryFileBrowser.ViewModels
 
         private void ExitExecute(object obj)
         {
+            using (var ctx = new DirectoryBrowserContext())
+            {
+                var student = new User() { Name = "Bill" };
+
+                ctx.Users.Add(student);
+                ctx.SaveChanges();
+            }
             Logger.Log("Exit execute");
             MessageBox.Show("ShutDown");
-            Environment.Exit(1);
+            //Environment.Exit(1);
         }
 
         #region EventsAndHandlers

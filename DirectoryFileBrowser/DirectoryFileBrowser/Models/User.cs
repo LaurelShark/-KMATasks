@@ -6,11 +6,11 @@ using System.Windows;
 namespace DirectoryFileBrowser.Models
 {
     [Serializable]
-    class User
+    public class User
     {
 
         #region Fields
-        private int id;
+        private int userId;
         private string name;
         private string surname;
         private string login;
@@ -22,15 +22,15 @@ namespace DirectoryFileBrowser.Models
 
 
         #region Properties
-        public int Id
+        public int UserId
         {
             get
             {
-                return id;
+                return userId;
             }
             internal set
             {
-                id = value;
+                userId = value;
             }
         }
         public string Name
@@ -50,7 +50,7 @@ namespace DirectoryFileBrowser.Models
             {
                 return surname;
             }
-            internal set
+            set
             {
                 surname = value;
             }
@@ -61,7 +61,7 @@ namespace DirectoryFileBrowser.Models
             {
                 return email;
             }
-            private set
+            set
             {
                 email = value;
             }
@@ -73,7 +73,7 @@ namespace DirectoryFileBrowser.Models
             {
                 return login;
             }
-            private set
+            set
             {
                 login = value;
             }

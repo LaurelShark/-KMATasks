@@ -16,7 +16,7 @@ namespace DirectoryFileBrowser.ViewModels
     { 
 
         #region Fields
-        int id = SessionManager.user.Id;
+        int id = SessionManager.user.UserId;
         private TreeView _mainFileViewNode;
         private string _dirPath; 
         

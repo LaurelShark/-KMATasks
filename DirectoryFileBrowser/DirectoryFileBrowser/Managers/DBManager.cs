@@ -19,7 +19,7 @@ namespace DirectoryFileBrowser.Managers
 
         internal static User CheckCachedUser(User userCandidate)
         {
-            var userInStorage = Users.FirstOrDefault(u => u.Id == userCandidate.Id);
+            var userInStorage = Users.FirstOrDefault(u => u.UserId == userCandidate.UserId);
             if (userInStorage != null && userInStorage.CheckPassword(userCandidate))
                 return userInStorage;
             return null;
@@ -64,7 +64,7 @@ namespace DirectoryFileBrowser.Managers
                 string password = dataSet.Tables[0].Rows[0]["password"].ToString();
                 int id = (int)dataSet.Tables[0].Rows[0]["id"];
                 User user = new User();
-                user.Id = id;
+                user.UserId = id;
                 user.Name = userName;
                 user.Surname = userSurname;
                 user.Password = password;
@@ -79,7 +79,7 @@ namespace DirectoryFileBrowser.Managers
             DateTime dateTime = DateTime.Now;
             string date = dateTime.ToString("yyyy-MM-dd H:mm:ss");
             SqlCommand ins = new SqlCommand(
-                String.Format("UPDATE Users SET lastLoginDate = '{0}' WHERE id = '{1}'", date, user.Id), con);
+                String.Format("UPDATE Users SET lastLoginDate = '{0}' WHERE id = '{1}'", date, user.UserId), con);
             ins.CommandType = CommandType.Text;
             SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.InsertCommand = ins;
@@ -92,7 +92,7 @@ namespace DirectoryFileBrowser.Managers
             con.Open();
             DateTime dateTime = DateTime.Now;
             string date = dateTime.ToString("yyyy-MM-dd H:mm:ss");
-            SqlCommand ins = new SqlCommand("INSERT INTO queries(userId, path, date) VALUES (" + user.Id + ",'" + dirPath + "', '" + date + "')", con);
+            SqlCommand ins = new SqlCommand("INSERT INTO queries(userId, path, date) VALUES (" + user.UserId + ",'" + dirPath + "', '" + date + "')", con);
             ins.CommandType = CommandType.Text;
             SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.InsertCommand = ins;
@@ -103,7 +103,7 @@ namespace DirectoryFileBrowser.Managers
         public static DataTable GetQueriesForUser(User user) {
             SqlConnection con = new SqlConnection(DBManager.DefaultConnectionString);
             con.Open();
-            SqlCommand userQueries = new SqlCommand("SELECT id, path, date FROM queries WHERE userId = " + user.Id, con);
+            SqlCommand userQueries = new SqlCommand("SELECT id, path, date FROM queries WHERE userId = " + user.UserId, con);
             userQueries.CommandType = CommandType.Text;
             SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.SelectCommand = userQueries;
