@@ -1,4 +1,5 @@
-﻿using DirectoryFileBrowser.Models;
+﻿using DirectoryFileBrowser.Database;
+using DirectoryFileBrowser.Models;
 using DirectoryFileBrowser.Tools;
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,7 @@ namespace DirectoryFileBrowser.Managers
 
         public static User GetUserByLogin(string login)
         {
+            /*
             SqlConnection con = new SqlConnection(DBManager.DefaultConnectionString);
             con.Open();
             SqlCommand cmd = new SqlCommand(string.Format("Select * from Users where login='{0}'", login), con);
@@ -71,9 +73,17 @@ namespace DirectoryFileBrowser.Managers
                 resultUser = user;
             }
             return resultUser;
+            */
+            using (var context = new DirectoryBrowserContext()) {
+                var queryResult = from u in context.Users
+                                  where u.Login == login
+                                  select u;
+                return queryResult.FirstOrDefault();
+            }
         }
 
         public static void UpdateLoggedInDateToCurrent(User user) {
+            /*
             SqlConnection con = new SqlConnection(DBManager.DefaultConnectionString);
             con.Open();
             DateTime dateTime = DateTime.Now;
@@ -84,8 +94,18 @@ namespace DirectoryFileBrowser.Managers
             SqlDataAdapter adapter = new SqlDataAdapter();
             adapter.InsertCommand = ins;
             ins.ExecuteNonQuery();
-            con.Close();
-        }
+             con.Close(); 
+            */
+            using (var context = new DirectoryBrowserContext())
+            {
+                var queryResult = from u in context.Users
+                                  where u.UserId == user.UserId
+                                  select u;
+                var foundUser = queryResult.First();
+                foundUser.LastLoginDate = DateTime.Now;
+                context.SaveChanges();
+            }
+        } 
 
         public static void WriteQueryForUser(User user, string dirPath) {
             SqlConnection con = new SqlConnection(DBManager.DefaultConnectionString);

@@ -95,7 +95,7 @@ namespace DirectoryFileBrowser.Models
             {
                 return lastLoginDate;
             }
-            private set
+            internal set
             {
                 lastLoginDate = value;
             }
@@ -107,7 +107,7 @@ namespace DirectoryFileBrowser.Models
             {
                 return queries;
             }
-            private set
+            internal set
             {
                 queries = value;
             }
@@ -141,5 +141,9 @@ namespace DirectoryFileBrowser.Models
             }
         }
 
+        internal User() {
+            LastLoginDate = DateTime.Now;
+        }
+        
     }
 }

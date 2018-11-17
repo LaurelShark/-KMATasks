@@ -1,10 +1,5 @@
 ﻿using DirectoryFileBrowser.Models;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DirectoryFileBrowser.Database
 {
@@ -16,8 +11,8 @@ namespace DirectoryFileBrowser.Database
                 .IsRequired()
                 .HasMaxLength(50);
 
-            this.Property(s => s.Name)
-                .IsConcurrencyToken();
+            //this.Property(s => s.Name)
+            //    .IsConcurrencyToken(); 
 
             // Configure a one-to-one relationship between Student & StudentAddress
             //this.HasOptional(s => s.Queries) // Mark Student.Address property optional (nullable)

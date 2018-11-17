@@ -15,24 +15,28 @@ namespace DirectoryFileBrowser.Models
         public User UserAuthor
         {
             get { return userAuthor; }
-            private set { userAuthor = value; }
+            internal set { userAuthor = value; }
         }
         public int QueryId
         {
             get { return queryId; }
-            private set { queryId = value; }
+            internal set { queryId = value; }
         }
         public string Path
         {
             get { return path; }
-            private set { path = value; }
+            internal set { path = value; }
         }
         public DateTime Date
         {
             get { return date; }
-            private set { date = value; }
+            internal set { date = value; }
         }
         #endregion
+
+        internal Query() {
+            Date = DateTime.Now;
+        }
 
         internal Query(string path, DateTime date) {
             Path = path;
