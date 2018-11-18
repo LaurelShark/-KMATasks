@@ -17,7 +17,7 @@ namespace DirectoryFileBrowser.Models
         private string _email;
         private string password;
         private DateTime lastLoginDate;
-        private List<Query> queries;
+        private ICollection<Query> query;
         #endregion
 
 
@@ -101,16 +101,10 @@ namespace DirectoryFileBrowser.Models
             }
         }
 
-        public List<Query> Queries
+        public ICollection<Query> Query
         {
-            get
-            {
-                return queries;
-            }
-            internal set
-            {
-                queries = value;
-            }
+            get { return query; }
+            set { query = value; }
         }
         #endregion
 
@@ -122,7 +116,7 @@ namespace DirectoryFileBrowser.Models
             _login = login;
             lastLoginDate = DateTime.Now;
 
-            Encrypting.ConvertToMd5(password);
+            Password = Encrypting.ConvertToMd5(password);
         }
 
         public bool PasswordMatch(string inputPwd)

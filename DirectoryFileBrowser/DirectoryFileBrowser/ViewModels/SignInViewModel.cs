@@ -74,7 +74,6 @@ namespace DirectoryFileBrowser.ViewModels
                 User currUser;
                 try
                 {
-                    Thread.Sleep(1000);
                     currUser = DBManager.GetUserByLogin(_login);
                     DBManager.AddUser(currUser);
                     Logger.Log("Logged in. Session new started");

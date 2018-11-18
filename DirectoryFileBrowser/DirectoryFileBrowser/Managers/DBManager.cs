@@ -82,7 +82,7 @@ namespace DirectoryFileBrowser.Managers
             {
                 var query = new Query
                 {
-                    UserAuthor = user,
+                    UserId = user.UserId,
                     Path = dirPath
                 };
                 context.Queries.Add(query);
@@ -94,7 +94,7 @@ namespace DirectoryFileBrowser.Managers
             using (var context = new DirectoryBrowserContext())
             {
                 var queryResult = from q in context.Queries
-                                  where q.UserAuthor.UserId == user.UserId
+                                  where q.User.UserId == user.UserId
                                   select q;
                 return queryResult.AsEnumerable().ToList();
             }

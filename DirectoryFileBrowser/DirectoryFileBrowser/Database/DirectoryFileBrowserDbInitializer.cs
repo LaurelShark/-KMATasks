@@ -6,7 +6,7 @@ using System.Data.Entity;
 namespace DirectoryFileBrowser.Database
 {
 
-    public class DirectoryFileBrowserDbInitializer : DropCreateDatabaseAlways<DirectoryBrowserContext>
+    public class DirectoryFileBrowserDbInitializer : CreateDatabaseIfNotExists<DirectoryBrowserContext>
     {
         protected override void Seed(DirectoryBrowserContext context)
         {
@@ -32,17 +32,17 @@ namespace DirectoryFileBrowser.Database
             users.Add(maryna);
             IList<Query> queries = new List<Query>();
             queries.Add(new Query() {
-                UserAuthor = taras,
+                User = taras,
                 Path = "D:\\\\music"
             });
             queries.Add(new Query()
             {
-                UserAuthor = taras,
+                User = taras,
                 Path = "D:\\\\audio"
             });
             queries.Add(new Query()
             {
-                UserAuthor = maryna,
+                User = maryna,
                 Path = "C:\\\\poetry"
             });
 

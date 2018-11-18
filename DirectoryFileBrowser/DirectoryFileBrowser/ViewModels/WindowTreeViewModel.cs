@@ -91,7 +91,6 @@ namespace DirectoryFileBrowser.ViewModels
             {
                 try
                 {
-                    Thread.Sleep(1000);
                     SessionManager.DestroyLastSession();
                 } catch (Exception e)
                 {

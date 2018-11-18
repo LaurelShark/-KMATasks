@@ -9,7 +9,6 @@ namespace DirectoryFileBrowser.Managers
     {
         #region Fields
         public static User user;
-        public static Query query;
         #endregion
 
         #region Properties

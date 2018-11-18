@@ -5,22 +5,27 @@ namespace DirectoryFileBrowser.Models
     public class Query
     {
         #region Fields
-        private User userAuthor;
-        private int queryId;
+        private int userId;
+        private User user;
+        private int id;
         private string path;
         private DateTime date;
         #endregion
 
         #region Properties
-        public User UserAuthor
-        {
-            get { return userAuthor; }
-            internal set { userAuthor = value; }
+        public int UserId {
+            get { return userId; }
+            set { userId = value; }
         }
-        public int QueryId
+        public User User
         {
-            get { return queryId; }
-            internal set { queryId = value; }
+            get { return user; }
+            internal set { user = value; }
+        }
+        public int Id
+        {
+            get { return id; }
+            internal set { id = value; }
         }
         public string Path
         {
