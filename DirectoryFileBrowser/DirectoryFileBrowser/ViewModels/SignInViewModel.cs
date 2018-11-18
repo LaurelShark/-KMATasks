@@ -110,19 +110,6 @@ namespace DirectoryFileBrowser.ViewModels
 
         private void ExitExecute(object obj)
         {
-            using (var ctx = new DirectoryBrowserContext())
-            {
-                try { 
-                var student = new User() { Name = "Bill" };
-
-                
-                ctx.Users.Add(student);
-                ctx.SaveChanges();
-                }catch (Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                }
-            }
             Logger.Log("Exit execute");
             MessageBox.Show("ShutDown");
             Environment.Exit(1);
