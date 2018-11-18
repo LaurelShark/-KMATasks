@@ -2,6 +2,7 @@
 using DirectoryFileBrowser.Models;
 using DirectoryFileBrowser.Tools;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
@@ -47,11 +48,11 @@ namespace DirectoryFileBrowser.ViewModels
 
         private void populateDataGrid() {
             Logger.Log("Populating query history...");
-            DataTable table = DBManager.GetQueriesForUser(SessionManager.user);
-            foreach (DataRow row in table.Rows)
+            IEnumerable<Query> queries = DBManager.GetQueriesForUser(SessionManager.user);
+            foreach (Query q in queries)
             {
-                string path = row.Field<string>("path");
-                DateTime date = row.Field<DateTime>("date");
+                string path = q.Path;
+                DateTime date = q.Date;
                 QueriesHistory.Add(new ViewableQuery(path, date));
             }
         }

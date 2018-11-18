@@ -125,7 +125,7 @@ namespace DirectoryFileBrowser.ViewModels
             }
             Logger.Log("Exit execute");
             MessageBox.Show("ShutDown");
-            //Environment.Exit(1);
+            Environment.Exit(1);
         }
 
         #region EventsAndHandlers

@@ -48,32 +48,6 @@ namespace DirectoryFileBrowser.Managers
 
         public static User GetUserByLogin(string login)
         {
-            /*
-            SqlConnection con = new SqlConnection(DBManager.DefaultConnectionString);
-            con.Open();
-            SqlCommand cmd = new SqlCommand(string.Format("Select * from Users where login='{0}'", login), con);
-            cmd.CommandType = CommandType.Text;
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            adapter.SelectCommand = cmd;
-            DataSet dataSet = new DataSet();
-            adapter.Fill(dataSet);
-            con.Close();
-            User resultUser = null;
-            if (dataSet.Tables[0].Rows.Count > 0)
-            {
-                string userName = dataSet.Tables[0].Rows[0]["name"].ToString();
-                string userSurname = dataSet.Tables[0].Rows[0]["surname"].ToString();
-                string password = dataSet.Tables[0].Rows[0]["password"].ToString();
-                int id = (int)dataSet.Tables[0].Rows[0]["id"];
-                User user = new User();
-                user.UserId = id;
-                user.Name = userName;
-                user.Surname = userSurname;
-                user.Password = password;
-                resultUser = user;
-            }
-            return resultUser;
-            */
             using (var context = new DirectoryBrowserContext()) {
                 var queryResult = from u in context.Users
                                   where u.Login == login
@@ -83,19 +57,6 @@ namespace DirectoryFileBrowser.Managers
         }
 
         public static void UpdateLoggedInDateToCurrent(User user) {
-            /*
-            SqlConnection con = new SqlConnection(DBManager.DefaultConnectionString);
-            con.Open();
-            DateTime dateTime = DateTime.Now;
-            string date = dateTime.ToString("yyyy-MM-dd H:mm:ss");
-            SqlCommand ins = new SqlCommand(
-                String.Format("UPDATE Users SET lastLoginDate = '{0}' WHERE id = '{1}'", date, user.UserId), con);
-            ins.CommandType = CommandType.Text;
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            adapter.InsertCommand = ins;
-            ins.ExecuteNonQuery();
-             con.Close(); 
-            */
             using (var context = new DirectoryBrowserContext())
             {
                 var queryResult = from u in context.Users
@@ -108,30 +69,28 @@ namespace DirectoryFileBrowser.Managers
         } 
 
         public static void WriteQueryForUser(User user, string dirPath) {
-            SqlConnection con = new SqlConnection(DBManager.DefaultConnectionString);
-            con.Open();
-            DateTime dateTime = DateTime.Now;
-            string date = dateTime.ToString("yyyy-MM-dd H:mm:ss");
-            SqlCommand ins = new SqlCommand("INSERT INTO queries(userId, path, date) VALUES (" + user.UserId + ",'" + dirPath + "', '" + date + "')", con);
-            ins.CommandType = CommandType.Text;
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            adapter.InsertCommand = ins;
-            ins.ExecuteNonQuery();
-            con.Close();
+            using (var context = new DirectoryBrowserContext())
+            {
+                var query = new Query
+                {
+                    UserAuthor = user,
+                    Path = dirPath
+                };
+                context.Queries.Add(query);
+                context.SaveChanges();
+            }  
         }
 
-        public static DataTable GetQueriesForUser(User user) {
-            SqlConnection con = new SqlConnection(DBManager.DefaultConnectionString);
-            con.Open();
-            SqlCommand userQueries = new SqlCommand("SELECT id, path, date FROM queries WHERE userId = " + user.UserId, con);
-            userQueries.CommandType = CommandType.Text;
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            adapter.SelectCommand = userQueries;
-            userQueries.ExecuteNonQuery();
-            DataTable dt = new DataTable("Queries");
-            adapter.Fill(dt);
-            con.Close();
-            return dt;
+        public static IEnumerable<Query> GetQueriesForUser(User user) {
+            using (var context = new DirectoryBrowserContext())
+            {
+                var queryResult = from q in context.Queries
+                                  where q.UserAuthor.UserId == user.UserId
+                                  select q;
+                return queryResult.AsEnumerable().ToList();
+            }
+
         }
+
     }
 }
