@@ -8,9 +8,7 @@ namespace DirectoryFileBrowser.Database
     {
         public DirectoryBrowserContext() : base("DirectoryFileBrowserDB")
         {
-            //System.Data.Entity.Database.SetInitializer(new MigrateDatabaseToLatestVersion<DirectoryBrowserContext, DirectoryFileBrowser.Migrations.Configuration>());
-            System.Data.Entity.Database.SetInitializer(new
-                DirectoryFileBrowserDbInitializer());
+            System.Data.Entity.Database.SetInitializer(new MigrateDatabaseToLatestVersion<DirectoryBrowserContext, DirectoryFileBrowser.Migrations.Configuration>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

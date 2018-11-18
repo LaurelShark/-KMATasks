@@ -103,6 +103,11 @@
     <Compile Include="Managers\NavigationManager.cs" />
     <Compile Include="Managers\SerializationManager.cs" />
     <Compile Include="Managers\SessionManager.cs" />
+    <Compile Include="Migrations\201811181225059_DirectoryBrowserDB-v1.cs" />
+    <Compile Include="Migrations\201811181225059_DirectoryBrowserDB-v1.Designer.cs">
+      <DependentUpon>201811181225059_DirectoryBrowserDB-v1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ViewableQuery.cs" />
     <Compile Include="Tools\Controls\LabelAndPasswordControl.xaml.cs">
       <DependentUpon>LabelAndPasswordControl.xaml</DependentUpon>
@@ -177,6 +182,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201811181225059_DirectoryBrowserDB-v1.resx">
+      <DependentUpon>201811181225059_DirectoryBrowserDB-v1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
