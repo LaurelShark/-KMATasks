@@ -21,6 +21,7 @@ namespace DirectoryFileBrowser.ViewModels
 
         #region Commands
         private ICommand _signInCommand;
+        private ICommand _signUpCommand;
         private ICommand _exitCommand;
         #endregion
 
@@ -43,6 +44,11 @@ namespace DirectoryFileBrowser.ViewModels
             get { return _signInCommand ?? (_signInCommand = new BindingCommand<object>(SignInExecute, SignInCanExecute)); }
         }
 
+        public ICommand SignUpCommand
+        {
+            get { return _signUpCommand ?? (_signUpCommand = new BindingCommand<object>(SignUpView, (obj) => true)); }
+        }
+
         public ICommand ExitCommand
         {
             get { return _exitCommand ?? (_exitCommand = new BindingCommand<object>(ExitExecute, (obj) => true)); }
@@ -51,6 +57,10 @@ namespace DirectoryFileBrowser.ViewModels
         public object NavigationManagers { get; private set; }
         #endregion
 
+        private void SignUpView(object obj)
+        {
+            NavigationManager.Instance.Navigate(ModesEnum.SignUp);
+        }
 
         private bool SignInCanExecute(object obj)
         {

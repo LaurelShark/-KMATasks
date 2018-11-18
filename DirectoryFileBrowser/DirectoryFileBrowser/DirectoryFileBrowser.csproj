@@ -118,12 +118,16 @@
     <Compile Include="ViewModels\ArchiveViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
+    <Compile Include="ViewModels\SignUpViewModel.cs" />
     <Compile Include="ViewModels\WindowTreeViewModel.cs" />
     <Compile Include="Views\Archive\ArchiveView.xaml.cs">
       <DependentUpon>ArchiveView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Authenfication\SignInView.xaml.cs">
       <DependentUpon>SignInView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Authenfication\SignUpView.xaml.cs">
+      <DependentUpon>SignUpView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Tree\WindowTreeView.xaml.cs">
       <DependentUpon>WindowTreeView.xaml</DependentUpon>
@@ -145,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Authenfication\SignInView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Authenfication\SignUpView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -19,7 +19,8 @@
         <Label x:Name="label" Content="Login&#xA;" HorizontalAlignment="Left" Margin="3,77,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
         <Label x:Name="label1" Content="Password:&#xD;&#xA;" HorizontalAlignment="Left" Margin="3,119,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <Button x:Name="SignIn" Content="Sign In" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="79,169,0,0" VerticalAlignment="Top" Width="120" Command="{Binding SignInCommand}"/>
-        <Button x:Name="Exit" Content="Exit" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="79,216,0,0" VerticalAlignment="Top" Width="120" Command="{Binding ExitCommand}"/>
+        <Button x:Name="Exit" Content="Exit" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="79,258,0,0" VerticalAlignment="Top" Width="120" Command="{Binding ExitCommand}" RenderTransformOrigin="0.533,2.6"/>
+        <Button x:Name="SignUp" Content="Sign Up" Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="79,211,0,0" VerticalAlignment="Top" Width="120" Command="{Binding SignUpCommand}"/>
 
     </Grid>
 </UserControl>

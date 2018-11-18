@@ -13,8 +13,8 @@ namespace DirectoryFileBrowser.Models
         private int userId;
         private string name;
         private string surname;
-        private string login;
-        private string email;
+        private string _login;
+        private string _email;
         private string password;
         private DateTime lastLoginDate;
         private List<Query> queries;
@@ -59,11 +59,11 @@ namespace DirectoryFileBrowser.Models
         {
             get
             {
-                return email;
+                return _email;
             }
             set
             {
-                email = value;
+                _email = value;
             }
         }
 
@@ -71,11 +71,11 @@ namespace DirectoryFileBrowser.Models
         {
             get
             {
-                return login;
+                return _login;
             }
             set
             {
-                login = value;
+                _login = value;
             }
         }
         public string Password
@@ -113,6 +113,17 @@ namespace DirectoryFileBrowser.Models
             }
         }
         #endregion
+
+        public User(string firstName, string lastName, string email, string login, string password) : this()
+        {
+            name = firstName;
+            surname = lastName;
+            _email = email;
+            _login = login;
+            lastLoginDate = DateTime.Now;
+
+            Encrypting.ConvertToMd5(password);
+        }
 
         public bool PasswordMatch(string inputPwd)
         {

@@ -26,7 +26,7 @@ namespace DirectoryFileBrowser.Managers
             return null;
         }
 
-        public static bool userExists(string login)
+        public static bool UserExists(string login)
         {
             return Users.Any(u => u.Login == login);
         }
@@ -41,7 +41,16 @@ namespace DirectoryFileBrowser.Managers
             SaveChanges();
         }
 
-        private static void SaveChanges()
+        public static void CreateNewUser(User user)
+        {
+            using (var context = new DirectoryBrowserContext())
+            {
+                context.Users.Add(user);
+                context.SaveChanges();
+            }
+        }
+
+            private static void SaveChanges()
         {
             SerializationManager.Serialize(Users, FileFolderHelper.StorageFilePath);
         }
