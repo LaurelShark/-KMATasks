@@ -125,6 +125,10 @@
       <Project>{0230B7C5-4651-4C14-AF74-CA6A71C97B5B}</Project>
       <Name>DBModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{379F5806-7584-4D7A-A480-F0B54B82B0F0}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

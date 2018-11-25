@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DirectoryFileBrowser.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -6,18 +7,18 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DirectoryFileBrowser
+namespace DirectoryFileBrowser.AppService
 {
-    public class DFBService : ServiceBase
+    public class DFBWindowsService : ServiceBase
     {
         internal const string CurrentServiceName = "DFBService";
-        internal const string CurrentServiceDisplayName = "DFBService Service";
+        internal const string CurrentServiceDisplayName = "DFBService";
         internal const string CurrentServiceSource = "DFBServiceSource";
-        internal const string CurrentServiceLogName = "DFBServiceServiceLogName";
-        internal const string CurrentServiceDescription = "Directory File Browser for tracking file system search history";
+        internal const string CurrentServiceLogName = "DFBServiceLogName";
+        internal const string CurrentServiceDescription = "Directory File Browser for tracking file system queries history";
         private ServiceHost _serviceHost = null;
 
-        public WalletSimulatorWindowsService()
+        public DFBWindowsService()
         {
             ServiceName = CurrentServiceName;
             try
@@ -51,7 +52,7 @@ namespace DirectoryFileBrowser
             }
             try
             {
-                _serviceHost = new ServiceHost(typeof(WalletSimulatorService));
+                _serviceHost = new ServiceHost(typeof(DFBService));
                 _serviceHost.Open();
             }
             catch (Exception ex)
