@@ -30,7 +30,7 @@ namespace DirectoryFileBrowser.Models
         public string Path
         {
             get { return path; }
-            internal set { path = value; }
+            set { path = value; }
         }
         public DateTime Date
         {
@@ -39,7 +39,7 @@ namespace DirectoryFileBrowser.Models
         }
         #endregion
 
-        internal Query() {
+        public Query() {
             Date = DateTime.Now;
         }
 

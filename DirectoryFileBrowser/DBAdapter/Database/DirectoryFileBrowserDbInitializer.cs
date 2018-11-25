@@ -12,6 +12,7 @@ namespace DirectoryFileBrowser.Database
         {
             IList<User> users = new List<User>();
 
+            /*
             User taras = new User()
             {
                 Name = "Taras",
@@ -46,9 +47,11 @@ namespace DirectoryFileBrowser.Database
                 Path = "C:\\\\poetry"
             });
 
+            
+
             context.Users.AddRange(users);
             context.Queries.AddRange(queries);
-
+            */
             base.Seed(context);
         }
     }

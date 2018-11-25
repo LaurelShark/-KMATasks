@@ -5,7 +5,7 @@ using System.IO;
 
 namespace DirectoryFileBrowser.Managers
 {
-    class SessionManager
+    public class SessionManager
     {
         #region Fields
         public static User user;
@@ -15,7 +15,7 @@ namespace DirectoryFileBrowser.Managers
         public static User CurrentUser { get; set; }
         #endregion
 
-        internal static void DeserializeLastUser()
+        public static void DeserializeLastUser()
         {
             User userCandidate;
             try

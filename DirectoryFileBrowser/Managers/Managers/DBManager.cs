@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace DirectoryFileBrowser.Managers
 {
-    class DBManager
+    public class DBManager
     {
         private static List<User> Users = new List<User>();
 
@@ -35,7 +35,7 @@ namespace DirectoryFileBrowser.Managers
 
         internal static string DefaultConnectionString { get { return defaultConnectionString; } }
 
-        internal static void AddUser(User user)
+        public static void AddUser(User user)
         {
             Users.Add(user);
             SaveChanges();

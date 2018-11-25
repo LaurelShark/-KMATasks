@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DirectoryFileBrowser.Tools
 {
-    internal static class FileFolderHelper
+    public static class FileFolderHelper
     {
         private static readonly string AppDataPath =
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
@@ -21,13 +21,13 @@ namespace DirectoryFileBrowser.Tools
         internal static readonly string LogFilepath = Path.Combine(LogFolderPath,
             "App_" + DateTime.Now.ToString("YYYY_MM_DD") + ".txt");
 
-        internal static readonly string StorageFilePath =
+        public static readonly string StorageFilePath =
             Path.Combine(ClientFolderPath, "Storage.dfb");
 
-        internal static readonly string LastUserFilePath =
+        public static readonly string LastUserFilePath =
             Path.Combine(ClientFolderPath, "LastUser.dfb");
 
-        internal static void CheckAndCreateFile(string filePath)
+        public static void CheckAndCreateFile(string filePath)
         {
             try
             {

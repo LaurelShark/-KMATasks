@@ -73,12 +73,18 @@
     </Compile>
     <Compile Include="Database\DirectoryBrowserContext.cs" />
     <Compile Include="Database\DirectoryFileBrowserDbInitializer.cs" />
+    <Compile Include="EntityWrapper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201811181225059_DirectoryBrowserDB-v1.cs" />
+    <Compile Include="Migrations\201811181225059_DirectoryBrowserDB-v1.Designer.cs">
+      <DependentUpon>201811181225059_DirectoryBrowserDB-v1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -92,6 +98,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201811181225059_DirectoryBrowserDB-v1.resx">
+      <DependentUpon>201811181225059_DirectoryBrowserDB-v1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -104,6 +113,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBModels\DBModels.csproj">
+      <Project>{0230B7C5-4651-4C14-AF74-CA6A71C97B5B}</Project>
+      <Name>DBModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{379f5806-7584-4d7a-a480-f0b54b82b0f0}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -22,7 +22,7 @@ namespace DirectoryFileBrowser.Models
         }
         #endregion
 
-        internal ViewableQuery(string path, DateTime date)
+        public ViewableQuery(string path, DateTime date)
         {
             Path = path;
             Date = date;

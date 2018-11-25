@@ -96,16 +96,16 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Managers\DBManager.cs" />
     <Compile Include="Managers\LoaderManager.cs" />
     <Compile Include="Managers\NavigationManager.cs" />
-    <Compile Include="Managers\SerializationManager.cs" />
-    <Compile Include="Managers\SessionManager.cs" />
-    <Compile Include="Migrations\201811181225059_DirectoryBrowserDB-v1.cs" />
-    <Compile Include="Migrations\201811181225059_DirectoryBrowserDB-v1.Designer.cs">
-      <DependentUpon>201811181225059_DirectoryBrowserDB-v1.cs</DependentUpon>
+    <Compile Include="Tools\BindingCommand.cs" />
+    <Compile Include="Tools\Controls\LabelAndPasswordControl.xaml.cs">
+      <DependentUpon>LabelAndPasswordControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Tools\IContentWindow.cs" />
+    <Compile Include="Tools\ILoaderOwner.cs" />
+    <Compile Include="Tools\NavigationModel.cs" />
+    <Compile Include="Tools\PasswordBoxAssistant.cs" />
     <Compile Include="ViewModels\ArchiveViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
@@ -128,6 +128,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tools\Controls\LabelAndPasswordControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -162,9 +166,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201811181225059_DirectoryBrowserDB-v1.resx">
-      <DependentUpon>201811181225059_DirectoryBrowserDB-v1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -202,6 +203,24 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>dfb.mdf</DependentUpon>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBAdapter\DBAdapter.csproj">
+      <Project>{862873c7-33e4-4407-8ab6-0c72dd8a479a}</Project>
+      <Name>DBAdapter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBModels\DBModels.csproj">
+      <Project>{0230B7C5-4651-4C14-AF74-CA6A71C97B5B}</Project>
+      <Name>DBModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Managers\Managers.csproj">
+      <Project>{8a50c9a9-2994-4213-b14d-aff280c09a2f}</Project>
+      <Name>Managers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{379F5806-7584-4D7A-A480-F0B54B82B0F0}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -95,7 +95,7 @@ namespace DirectoryFileBrowser.Models
             {
                 return lastLoginDate;
             }
-            internal set
+            set
             {
                 lastLoginDate = value;
             }
