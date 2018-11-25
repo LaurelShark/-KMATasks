@@ -89,8 +89,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Database\DirectoryFileBrowserDbInitializer.cs" />
-    <Compile Include="Database\UserConfiguration.cs" />
     <Compile Include="FileUtils\AbstractNode.cs" />
     <Compile Include="FileUtils\DirectoryNode.cs" />
     <Compile Include="FileUtils\FileNode.cs" />
@@ -99,7 +97,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Managers\DBManager.cs" />
-    <Compile Include="Database\DirectoryBrowserContext.cs" />
     <Compile Include="Managers\LoaderManager.cs" />
     <Compile Include="Managers\NavigationManager.cs" />
     <Compile Include="Managers\SerializationManager.cs" />
@@ -109,18 +106,6 @@
       <DependentUpon>201811181225059_DirectoryBrowserDB-v1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\ViewableQuery.cs" />
-    <Compile Include="Tools\Controls\LabelAndPasswordControl.xaml.cs">
-      <DependentUpon>LabelAndPasswordControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Tools\Encrypting.cs" />
-    <Compile Include="Tools\FileFolderHelper.cs" />
-    <Compile Include="Tools\IContentWindow.cs" />
-    <Compile Include="Tools\BindingCommand.cs" />
-    <Compile Include="Tools\ILoaderOwner.cs" />
-    <Compile Include="Tools\Logger.cs" />
-    <Compile Include="Tools\NavigationModel.cs" />
-    <Compile Include="Tools\PasswordBoxAssistant.cs" />
     <Compile Include="ViewModels\ArchiveViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
@@ -146,10 +131,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Tools\Controls\LabelAndPasswordControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Archive\ArchiveView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -168,8 +149,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Query.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
