@@ -71,6 +71,7 @@ namespace DirectoryFileBrowser
             }
             catch (Exception ex)
             {
+                
                 MessageBox.Show(ex.Message);
                 return false;
             }

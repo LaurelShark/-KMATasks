@@ -13,5 +13,6 @@ namespace AppService
     /// </summary>
     public partial class App : Application
     {
+      
     }
 }
