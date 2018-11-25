@@ -47,5 +47,10 @@ namespace DirectoryFileBrowser.Models
             Path = path;
             Date = date;
         }
+
+        public void DeleteDatabaseValues()
+        {
+            user = null;
+        }
     }
 }
