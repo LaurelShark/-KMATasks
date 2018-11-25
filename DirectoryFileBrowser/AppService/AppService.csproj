@@ -75,6 +75,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DFBService.cs" />
     <Compile Include="DFBWindowsService.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -110,6 +111,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppServiceInterface\AppServiceInterface.csproj">
+      <Project>{5614B1D3-CF36-4582-8022-C00C40761B3D}</Project>
+      <Name>AppServiceInterface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBAdapter\DBAdapter.csproj">
+      <Project>{862873C7-33E4-4407-8AB6-0C72DD8A479A}</Project>
+      <Name>DBAdapter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DBModels\DBModels.csproj">
+      <Project>{0230B7C5-4651-4C14-AF74-CA6A71C97B5B}</Project>
+      <Name>DBModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
