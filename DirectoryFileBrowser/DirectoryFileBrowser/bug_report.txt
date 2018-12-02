@@ -26,3 +26,16 @@ Actual result:
 Cyrrilic symbols are shown as '?????'
 Expected result:
 Cyrrilic symbols are shown correspondingly
+
+Bug #3 
+
+Steps to reproduce:
+1. Sign in as user #1
+2. Sign out
+3. Sign in as user #2
+4. Look at user name on window
+
+Actual result:
+User name is of previous user
+Expected result:
+User name should correspond to user #2
