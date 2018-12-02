@@ -12,16 +12,17 @@ namespace DirectoryFileBrowser.Tools
             Path.Combine(AppDataPath, "DirectoryFileBrowser");
 
         internal static readonly string LogFolderPath =
-            Path.Combine(ClientFolderPath, "Gol");
+            Path.Combine(ClientFolderPath, "logger_output");
 
         internal static readonly string LogFilepath = Path.Combine(LogFolderPath,
             "App_" + DateTime.Now.ToString("yyyy_MM_dd") + ".txt");
 
-        public static readonly string StorageFilePath =
-            Path.Combine(ClientFolderPath, "Storage.dfb");
-
         public static readonly string LastUserFilePath =
             Path.Combine(ClientFolderPath, "LastUser.dfb");
+
+        public static FileInfo LastUserFile {
+            get { return new FileInfo(LastUserFilePath); }
+        }
 
         public static void CheckAndCreateFile(string filePath)
         {

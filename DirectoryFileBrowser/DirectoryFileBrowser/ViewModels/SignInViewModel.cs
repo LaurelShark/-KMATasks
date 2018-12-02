@@ -73,8 +73,23 @@ namespace DirectoryFileBrowser.ViewModels
                 try
                 {
                     currUser = DBManager.GetUserByLogin(_login);
-                    DBManager.AddUser(currUser);
-                    Logger.Log("Logged in. Session new started");
+                    if (currUser == null)
+                    {
+                        Logger.Log("User doesnt exist");
+                        MessageBox.Show("User doesnt exist");
+                        return false;
+                    }
+                    Logger.Log("User found.");
+                    if (!currUser.PasswordMatch(_password))
+                    {
+                        Logger.Log("Passwords do not match");
+                        MessageBox.Show("Wrong password");
+                        return false;
+                    }
+                    DBManager.UpdateLoggedInDateToCurrent(currUser);
+                    SessionManager.User = currUser;
+                    SessionManager.SerializeCurrentUser();
+                    Logger.Log("Logged in. New session started");
                 }
                 catch (Exception e)
                 {
@@ -82,29 +97,6 @@ namespace DirectoryFileBrowser.ViewModels
                     Logger.Log("Login failed", e);
                     return false;
                 }
-                if (currUser == null)
-                {
-                    Logger.Log("User doesnt exist");
-                    MessageBox.Show("User doesnt exist");
-                    return false;
-                }
-                try
-                {
-                    if (!currUser.PasswordMatch(_password))
-                    {
-                        Logger.Log("Passwords do not match");
-                        MessageBox.Show("Wrong password");
-                        return false;
-                    }
-                }
-                catch (Exception e)
-                {
-                    Logger.Log("Password validation error!", e);
-                    MessageBox.Show("Password validation error!", e.Message);
-                    return false;
-                }
-                DBManager.UpdateLoggedInDateToCurrent(currUser);
-                SessionManager.user = currUser;
                 return true;
             });
             LoaderManager.Instance.HideLoader();

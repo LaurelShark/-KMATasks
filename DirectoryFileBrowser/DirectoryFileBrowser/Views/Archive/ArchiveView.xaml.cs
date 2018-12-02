@@ -8,7 +8,7 @@ namespace DirectoryFileBrowser.Views.Archive
         public ArchiveView()
         {
             InitializeComponent();
-            string fullName = SessionManager.user.Name + " " + SessionManager.user.Surname;
+            string fullName = SessionManager.User.Name + " " + SessionManager.User.Surname;
             textBlockFullName.Text = fullName;
             var _archiveViewModel = new ArchiveViewModel();
             DataContext = _archiveViewModel;

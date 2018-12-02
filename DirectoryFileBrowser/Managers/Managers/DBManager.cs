@@ -1,41 +1,14 @@
 ﻿using DirectoryFileBrowser.Database;
 using DirectoryFileBrowser.Models;
-using DirectoryFileBrowser.Tools;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 
 namespace DirectoryFileBrowser.Managers
 {
     public class DBManager
     {
-        private static List<User> Users = new List<User>();
-
-        static DBManager()
-        {
-            Users = SerializationManager.Deserialize<List<User>>(FileFolderHelper.StorageFilePath) ?? new List<User>();
-        }
-
-        internal static User CheckCachedUser(User userCandidate)
-        {
-            var userInStorage = Users.FirstOrDefault(u => u.UserId == userCandidate.UserId);
-            if (userInStorage != null && userInStorage.CheckPassword(userCandidate))
-                return userInStorage;
-            return null;
-        }
-
-        public static bool UserExists(string login)
-        {
-            return Users.Any(u => u.Login == login);
-        }
-
-        public static void AddUser(User user)
-        {
-            Users.Add(user);
-            SaveChanges();
-        }
 
         public static void CreateNewUser(User user)
         {
@@ -44,11 +17,6 @@ namespace DirectoryFileBrowser.Managers
                 context.Users.Add(user);
                 context.SaveChanges();
             }
-        }
-
-            private static void SaveChanges()
-        {
-            SerializationManager.Serialize(Users, FileFolderHelper.StorageFilePath);
         }
 
         public static User GetUserByLogin(string login)

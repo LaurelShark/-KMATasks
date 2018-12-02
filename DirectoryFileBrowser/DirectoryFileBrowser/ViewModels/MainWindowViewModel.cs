@@ -1,6 +1,5 @@
 ﻿using DirectoryFileBrowser.Managers;
 using DirectoryFileBrowser.Tools;
-using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -46,23 +45,17 @@ namespace DirectoryFileBrowser.ViewModels
 
         internal void StartApplication()
         {
-            if (SessionManager.IsLastSessionFinished())
-            {
-                Logger.Log("Manual login");
-                NavigationManager.Instance.Navigate(ModesEnum.SignIn);
-            }
-            else
+            if (SessionManager.IsLastSessionActive())
             {
                 Logger.Log("Auto login: previous session was not finished");
                 SessionManager.DeserializeLastUser();
                 NavigationManager.Instance.Navigate(ModesEnum.Tree);
             }
-        }
-
-        public void LogoutCommand()
-        {
-            MessageBox.Show("logout");
-            Logger.Log("Logged out. Session should be destroyed");
+            else
+            {
+                Logger.Log("Manual login");
+                NavigationManager.Instance.Navigate(ModesEnum.SignIn);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

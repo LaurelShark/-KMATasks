@@ -15,7 +15,7 @@ namespace DirectoryFileBrowser.ViewModels
     { 
 
         #region Fields
-        private int id = SessionManager.user.UserId;
+        private int id = SessionManager.User.UserId;
         private TreeView _mainFileViewNode;
         private string _dirPath; 
         
@@ -88,37 +88,35 @@ namespace DirectoryFileBrowser.ViewModels
             LoaderManager.Instance.ShowLoader();
             var res = await Task.Run(() =>
             {
-                try
-                {
-                    SessionManager.DestroyLastSession();
-                } catch (Exception e)
-                {
-                    MessageBox.Show(e.Message);
-                    return false;
-                }
-                return true;                
+                SessionManager.DestroyLastSession();
+                return true;
             });
             LoaderManager.Instance.HideLoader();
-            MessageBox.Show("successfully logged out");
             if (res)
+            {
                 NavigationManager.Instance.Navigate(ModesEnum.SignIn);
+                MessageBox.Show("Successfully logged out");
+                Logger.Log("Successfully logged out");
+            }
         }
 
         private async void StartSearchExecute(object obj)
         {
             LoaderManager.Instance.ShowLoader();
             AbstractNode fileNode = null;
+            Logger.Log("Search started");
             var res = await Task.Run(() => {
                 try {
                     string path = DirPath;
                     fileNode = FileUtils.GetFileTreeByDirectoryPath(path);
-                    DBManager.WriteQueryForUser(SessionManager.user, path.Replace("\\", "\\\\"));
+                    DBManager.WriteQueryForUser(SessionManager.User, path.Replace("\\", "\\\\"));
                     return true;
                 }
                 catch (Exception exception)
                 {
+                    Logger.Log("Search failed", exception);
                     MessageBox.Show(exception.Message);
-                        return false;
+                    return false;
                 }
             });
             LoaderManager.Instance.HideLoader();

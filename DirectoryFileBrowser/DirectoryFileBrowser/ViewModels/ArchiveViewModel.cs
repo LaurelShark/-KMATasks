@@ -47,7 +47,7 @@ namespace DirectoryFileBrowser.ViewModels
 
         private void PopulateDataGrid() {
             Logger.Log("Populating query history...");
-            IEnumerable<Query> queries = DBManager.GetQueriesForUser(SessionManager.user);
+            IEnumerable<Query> queries = DBManager.GetQueriesForUser(SessionManager.User);
             foreach (Query q in queries)
             {
                 string path = q.Path;

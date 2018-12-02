@@ -118,7 +118,7 @@ namespace DirectoryFileBrowser.ViewModels
                 {
                     var user = new User(_firstName, _lastName, _email, _login, _password);
                     DBManager.CreateNewUser(user);
-                    SessionManager.user = user;
+                    SessionManager.User = user;
                 }
                 catch (Exception ex)
                 {

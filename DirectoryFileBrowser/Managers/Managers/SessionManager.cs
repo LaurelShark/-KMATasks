@@ -8,50 +8,56 @@ namespace DirectoryFileBrowser.Managers
     public class SessionManager
     {
         #region Fields
-        public static User user; // TODO merge is with Current User
+        private static User user;
         #endregion
 
         #region Properties
-        public static User CurrentUser { get; set; }
+        public static User User {
+            get { return user; }
+            set { user = value; }
+        }
         #endregion
 
         public static void DeserializeLastUser()
         {
-            User userCandidate;
             try
             {
-                userCandidate = SerializationManager.Deserialize<User>(Path.Combine(FileFolderHelper.LastUserFilePath));
+                User = SerializationManager.Deserialize<User>(FileFolderHelper.LastUserFilePath);
             }
             catch (Exception ex)
             {
-                userCandidate = null;
                 Logger.Log("Failed to Deserialize last user", ex);
             }
-            if (userCandidate == null)
+        }
+
+        public static void SerializeCurrentUser() {
+            try
             {
-                Logger.Log("User was not deserialized");
-                return;
+                SerializationManager.Serialize<User>(User, FileFolderHelper.LastUserFilePath);
+                Logger.Log("User was serialized");
             }
-            userCandidate = DBManager.CheckCachedUser(userCandidate);
-            if (userCandidate == null)
-                Logger.Log("Failed to relogin last user");
-            else
-                CurrentUser = userCandidate;
-        }
-
-        private static FileInfo GetSessionFileInfo() {
-            FileInfo file = new FileInfo(Path.Combine(FileFolderHelper.LastUserFilePath));
-            return file;
-        }
-
-        public static bool IsLastSessionFinished() {
-            return ! GetSessionFileInfo().Exists;
-        }
-
-        public static void DestroyLastSession() {
-            if (IsLastSessionFinished())
+            catch (Exception ex)
             {
-                GetSessionFileInfo().Delete();
+                Logger.Log("Failed to serialize last user", ex);
+            }
+        }
+
+        public static bool IsLastSessionActive() {
+            return FileFolderHelper.LastUserFile.Exists;
+        }
+
+        public static void DestroyLastSession()
+        {
+            try
+            {
+                if (IsLastSessionActive())
+                {
+                    FileFolderHelper.LastUserFile.Delete();
+                }
+            }
+            catch (IOException ex)
+            {
+                Logger.Log("Failed to delete last user autologin file", ex);
             }
         }
     }

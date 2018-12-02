@@ -12,7 +12,7 @@ namespace DirectoryFileBrowser.Views.Tree
         public WindowTreeView()
         {
             InitializeComponent();
-            string userName = SessionManager.user.Name + " " + SessionManager.user.Surname;  
+            string userName = SessionManager.User.Name + " " + SessionManager.User.Surname;  
             textBlockFullName.Text = userName;
             var windowTreeViewModel = new WindowTreeViewModel();
             DataContext = windowTreeViewModel;

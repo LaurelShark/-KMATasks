@@ -38,7 +38,7 @@ namespace DirectoryFileBrowser.Managers
             catch (Exception ex)
             {
                 Logger.Log($"Failed to Deserialize Data From File {filePath}", ex);
-                return null;
+                throw;
             }
         }
     }
