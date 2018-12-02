@@ -1,11 +1,7 @@
 ﻿using DirectoryFileBrowser.Database;
 using DirectoryFileBrowser.Models;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DirectoryFileBrowser.DBAdapter
 {
@@ -54,18 +50,5 @@ namespace DirectoryFileBrowser.DBAdapter
                 context.SaveChanges();
             }
         }
-
-        /*
-        public static void DeleteQuery(Query selectedQuery)
-        {
-            using (var context = new DirectoryBrowserContext())
-            {
-                selectedQuery.DeleteDatabaseValues();
-                context.Queries.Attach(selectedQuery);
-                context.Queries.Remove(selectedQuery);
-                context.SaveChanges();
-            }
-        }
-        */
     }
 }

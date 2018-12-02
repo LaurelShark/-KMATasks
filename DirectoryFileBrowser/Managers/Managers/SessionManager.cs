@@ -8,7 +8,7 @@ namespace DirectoryFileBrowser.Managers
     public class SessionManager
     {
         #region Fields
-        public static User user;
+        public static User user; // TODO merge is with Current User
         #endregion
 
         #region Properties

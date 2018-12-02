@@ -31,10 +31,6 @@ namespace DirectoryFileBrowser.Managers
             return Users.Any(u => u.Login == login);
         }
 
-        private static readonly string defaultConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|dfb.mdf;Integrated Security=True";
-
-        internal static string DefaultConnectionString { get { return defaultConnectionString; } }
-
         public static void AddUser(User user)
         {
             Users.Add(user);

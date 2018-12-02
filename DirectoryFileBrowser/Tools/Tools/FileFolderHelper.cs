@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DirectoryFileBrowser.Tools
 {
@@ -19,7 +15,7 @@ namespace DirectoryFileBrowser.Tools
             Path.Combine(ClientFolderPath, "Gol");
 
         internal static readonly string LogFilepath = Path.Combine(LogFolderPath,
-            "App_" + DateTime.Now.ToString("YYYY_MM_DD") + ".txt");
+            "App_" + DateTime.Now.ToString("yyyy_MM_dd") + ".txt");
 
         public static readonly string StorageFilePath =
             Path.Combine(ClientFolderPath, "Storage.dfb");

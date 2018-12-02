@@ -1,6 +1,5 @@
 ﻿using DirectoryFileBrowser.Models;
 using System.Data.Entity;
-using System.Linq;
 
 namespace DirectoryFileBrowser.Database
 {

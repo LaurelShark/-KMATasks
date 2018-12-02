@@ -136,8 +136,6 @@ namespace DirectoryFileBrowser.Models
         {
             try
             {
-                //string res = Encrypting.DecryptString(_password, PrivateKey);
-                //string res2 = Encrypting.DecryptString(userCandidate._password, PrivateKey);
                 return password == userCandidate.password;
             }
             catch (Exception)
