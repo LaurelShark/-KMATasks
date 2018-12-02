@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DirectoryFileBrowser.AppService;
+using System;
 using System.Configuration.Install;
 using System.ServiceProcess;
 
@@ -32,6 +33,7 @@ namespace AppService1
         /// </summary>
         private void InitializeComponent()
         {
+           
             this._serviceProcessInstaller = new System.ServiceProcess.ServiceProcessInstaller();
             this._serviceInstaller = new System.ServiceProcess.ServiceInstaller();
             // 
@@ -44,6 +46,7 @@ namespace AppService1
             // 
             // _serviceInstaller
             // 
+            this._serviceInstaller.ServiceName = DFBWindowsService.CurrentServiceName;
             this._serviceInstaller.StartType = System.ServiceProcess.ServiceStartMode.Automatic;
             this._serviceInstaller.AfterInstall += new System.Configuration.Install.InstallEventHandler(this._serviceInstaller_AfterInstall);
             // 
