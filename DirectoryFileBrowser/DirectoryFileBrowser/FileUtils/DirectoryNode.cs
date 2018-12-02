@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace DirectoryFileBrowser
 {
@@ -10,7 +6,7 @@ namespace DirectoryFileBrowser
     {
         public DirectoryNode(string name, List<AbstractNode> children) : base(name, children) { }
 
-        public override bool isDirectory()
+        public override bool IsDirectory()
         {
             return true;
         }

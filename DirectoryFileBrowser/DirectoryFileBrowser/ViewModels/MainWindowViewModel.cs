@@ -62,7 +62,7 @@ namespace DirectoryFileBrowser.ViewModels
         public void LogoutCommand()
         {
             MessageBox.Show("logout");
-            Logger.Log("Logged out");
+            Logger.Log("Logged out. Session should be destroyed");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -1,11 +1,9 @@
-﻿using DirectoryFileBrowser.Database;
-using DirectoryFileBrowser.Managers;
+﻿using DirectoryFileBrowser.Managers;
 using DirectoryFileBrowser.Models;
 using DirectoryFileBrowser.Tools;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;

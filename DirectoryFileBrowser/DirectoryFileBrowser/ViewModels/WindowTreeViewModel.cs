@@ -4,7 +4,6 @@ using DirectoryFileBrowser.Views.Tree;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,7 +15,7 @@ namespace DirectoryFileBrowser.ViewModels
     { 
 
         #region Fields
-        int id = SessionManager.user.UserId;
+        private int id = SessionManager.user.UserId;
         private TreeView _mainFileViewNode;
         private string _dirPath; 
         
@@ -112,7 +111,7 @@ namespace DirectoryFileBrowser.ViewModels
             var res = await Task.Run(() => {
                 try {
                     string path = DirPath;
-                    fileNode = FileUtils.getFileTreeByDirectoryPath(path);
+                    fileNode = FileUtils.GetFileTreeByDirectoryPath(path);
                     DBManager.WriteQueryForUser(SessionManager.user, path.Replace("\\", "\\\\"));
                     return true;
                 }
@@ -134,7 +133,7 @@ namespace DirectoryFileBrowser.ViewModels
         {
             TreeViewItem viewNode = new TreeViewItem();
             viewNode.Header = fileNode.Name;
-            if (fileNode.isDirectory())
+            if (fileNode.IsDirectory())
             {
                 Action<AbstractNode> addFileNodeToViewNode = node => viewNode.Items.Add(BuildTreeViewItem(node));
                 fileNode.Children.ForEach(addFileNodeToViewNode);

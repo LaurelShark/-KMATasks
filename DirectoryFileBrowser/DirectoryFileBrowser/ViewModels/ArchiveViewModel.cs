@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Data;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
@@ -38,7 +37,7 @@ namespace DirectoryFileBrowser.ViewModels
         internal ArchiveViewModel() {
             Logger.Log("Initializing history query view");
             QueriesHistory = new ObservableCollection<ViewableQuery>();
-            populateDataGrid();
+            PopulateDataGrid();
         }
 
         private void FromArchiveToTreeViewExecute(object obj)
@@ -46,7 +45,7 @@ namespace DirectoryFileBrowser.ViewModels
             NavigationManager.Instance.Navigate(ModesEnum.Tree);
         }
 
-        private void populateDataGrid() {
+        private void PopulateDataGrid() {
             Logger.Log("Populating query history...");
             IEnumerable<Query> queries = DBManager.GetQueriesForUser(SessionManager.user);
             foreach (Query q in queries)

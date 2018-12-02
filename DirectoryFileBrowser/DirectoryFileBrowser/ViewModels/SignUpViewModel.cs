@@ -1,15 +1,10 @@
 ﻿using DirectoryFileBrowser.Managers;
 using DirectoryFileBrowser.Models;
-using DirectoryFileBrowser.Properties;
 using DirectoryFileBrowser.Tools;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -103,7 +98,6 @@ namespace DirectoryFileBrowser.ViewModels
             {
                 try
                 {
-                    Thread.Sleep(1000);
                     if (!new EmailAddressAttribute().IsValid(_email))
                     {
                         MessageBox.Show("email is not valid");
