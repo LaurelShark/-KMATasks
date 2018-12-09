@@ -71,7 +71,7 @@ namespace DirectoryFileBrowser
             }
             catch (Exception ex)
             {
-                
+                MessageBox.Show("asdf");
                 MessageBox.Show(ex.Message);
                 return false;
             }
