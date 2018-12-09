@@ -5,7 +5,7 @@ namespace DirectoryFileBrowser.Database
 {
     public class DirectoryBrowserContext : DbContext
     {
-        public DirectoryBrowserContext() : base("DirectoryFileBrowserDB")
+        public DirectoryBrowserContext() : base("DFBBase")
         {
             System.Data.Entity.Database.SetInitializer(new MigrateDatabaseToLatestVersion<DirectoryBrowserContext, DirectoryFileBrowser.Migrations.Configuration>());
         }

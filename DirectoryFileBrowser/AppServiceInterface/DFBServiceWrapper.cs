@@ -42,7 +42,7 @@ namespace DirectoryFileBrowser.AppServiceInterface
             using (var myChannelFactory = new ChannelFactory<IDFBServiceContract>("Server"))
             {
                 IDFBServiceContract client = myChannelFactory.CreateChannel();
-                client.AddWallet(query);
+                client.AddQuery(query);
             }
         }
 
@@ -51,7 +51,7 @@ namespace DirectoryFileBrowser.AppServiceInterface
             using (var myChannelFactory = new ChannelFactory<IDFBServiceContract>("Server"))
             {
                 IDFBServiceContract client = myChannelFactory.CreateChannel();
-                client.SaveWallet(query);
+                client.SaveQuery(query);
             }
         }
     }

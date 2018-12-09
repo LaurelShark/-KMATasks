@@ -18,8 +18,8 @@ namespace DirectoryFileBrowser.AppServiceInterface
         [OperationContract]
         void AddUser(User user);
         [OperationContract]
-        void AddWallet(Query query);
+        void AddQuery(Query query);
         [OperationContract]
-        void SaveWallet(Query query);
+        void SaveQuery(Query query);
     }
 }
