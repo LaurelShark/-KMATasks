@@ -16,7 +16,6 @@ namespace DirectoryFileBrowser.Tools
 
     internal class NavigationModel
     {
-        // write other fields
         private readonly IContentWindow _contentWindow;
         private SignInView signInView;
         private WindowTreeView windowTreeView;

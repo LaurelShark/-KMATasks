@@ -1,24 +1,15 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Configuration.Install;
-using System.Linq;
 using System.Reflection;
 using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DirectoryFileBrowser.DirFileBrowserService
 {
     class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         static void Main()
         {
-            //Thread.Sleep(10000);
             bool isInstalled = false;
             bool serviceStarting = false;
             const string serviceName = DirFileBrowserWindowsService.CurrentServiceName;

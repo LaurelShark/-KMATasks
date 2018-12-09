@@ -21,11 +21,6 @@ namespace DirectoryFileBrowser
             mainWindowViewModel.StartApplication();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
         public ContentControl ContentControl
         {
             get { return _contentControl; }
