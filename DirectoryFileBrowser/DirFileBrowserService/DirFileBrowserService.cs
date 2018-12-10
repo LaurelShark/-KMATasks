@@ -2,7 +2,7 @@
 using DirectoryFileBrowser.DBAdapter;
 using DirectoryFileBrowser.Models;
 
-namespace DirectoryFileBrowser.DirFileBrowserService
+namespace DirFileBrowserService
 {
     internal class DirFileBrowserService : IDFBServiceContract
     {

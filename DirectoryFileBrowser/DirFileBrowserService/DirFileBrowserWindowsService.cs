@@ -3,7 +3,7 @@ using System;
 using System.ServiceModel;
 using System.ServiceProcess;
 
-namespace DirectoryFileBrowser.DirFileBrowserService
+namespace DirFileBrowserService
 {
     public class DirFileBrowserWindowsService : ServiceBase
     {

@@ -4,7 +4,7 @@ using System.Reflection;
 using System.ServiceProcess;
 using System.Windows.Forms;
 
-namespace DirectoryFileBrowser.DirFileBrowserService
+namespace DirFileBrowserService
 {
     class Program
     {

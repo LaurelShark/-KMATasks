@@ -2,7 +2,7 @@
 using System.Configuration.Install;
 using System.ServiceProcess;
 
-namespace DirectoryFileBrowser.DirFileBrowserService
+namespace DirFileBrowserService
 {
     [RunInstaller(true)]
     public class ProjectInstaller : Installer
